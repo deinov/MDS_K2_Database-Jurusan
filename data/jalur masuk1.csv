@@ -1,0 +1,130 @@
+id_prodi ,id_univ,jalur_masuk,daya_tampung,website
+316170,1031,SNBP,50,https://www.ut.ac.id/sistem-registrasi
+316170,1031,mandiri,45,https://www.ut.ac.id/sistem-registrasi
+323016,1037,SNBP,20,http://penmaba.unj.ac.id/
+323016,1037,SNBT,36,http://penmaba.unj.ac.id/
+323016,1037,Mandiri Ujian Tulis,24,http://penmaba.unj.ac.id/
+332521,335001,SPMB STIS ,250,https://spmb.stis.ac.id/site/dashboard
+332521,335001,SPMB STIS ,250,https://spmb.stis.ac.id/site/dashboard
+332521,335001,SPMB STIS ,100,https://spmb.stis.ac.id/site/dashboard
+321030,1002,SNBP,17,https://penerimaan.ui.ac.id/
+321030,1002,SNBT,26,https://penerimaan.ui.ac.id/
+321030,1002,PPKB,26,https://penerimaan.ui.ac.id/
+321030,1002,SIMAK UI,20,https://penerimaan.ui.ac.id/
+321030,1002,Talent scouting ,10,https://penerimaan.ui.ac.id/
+341014,2003,SNBP,48,https://registrasi.admisi.ipb.ac.id
+341014,2003,SNBT,36,https://registrasi.admisi.ipb.ac.id
+341014,2003,SM-IPB,20,https://registrasi.admisi.ipb.ac.id
+341014,2003,Jalur Beasiswa Utusan Daerah,4,https://registrasi.admisi.ipb.ac.id
+341014,2003,Jalur Ketua osis,8,https://registrasi.admisi.ipb.ac.id
+341014,2003,Jalur Prestasi Internasional dan Nasional (PIN) ,4,https://registrasi.admisi.ipb.ac.id
+341015,2003,Reguler ,50,https://registrasi.admisi.ipb.ac.id
+341015,2003,Jalur Penelitian (By Research),8,https://registrasi.admisi.ipb.ac.id
+341016,2003,Reguler ,35,https://registrasi.admisi.ipb.ac.id
+341016,2003,Jalur Penelitian (By Research),7,https://registrasi.admisi.ipb.ac.id
+333006,1007,SNBP,44,https://smup.unpad.ac.id/
+333006,1007,SNBT,63,https://smup.unpad.ac.id/
+333006,1007,SMUP,44,https://smup.unpad.ac.id/
+333007,1007,Reguler ,47,https://smup.unpad.ac.id/
+356073,1041,SNBP,8,https://unnes.ac.id/admission
+356073,1041,SNBT,12,https://unnes.ac.id/admission
+356073,1041,Mandiri,20,https://unnes.ac.id/admission
+356073,1041,Jalur Prestasi,8,https://unnes.ac.id/admission
+356074,1041,SNBP,10,https://unnes.ac.id/admission
+356074,1041,SNBT,15,https://unnes.ac.id/admission
+356074,1041,Mandiri,25,https://unnes.ac.id/admission
+356074,1041,Jalur Prestasi,10,https://unnes.ac.id/admission
+355009,1008,SNBP,42,https://pmb.undip.ac.id/
+355009,1008,SNBT,63,https://pmb.undip.ac.id/
+355009,1008,SBUB,115,https://pmb.undip.ac.id/
+353029,1027,SNBP,15,https://spmb.uns.ac.id
+353029,1027,SNBT,27,https://spmb.uns.ac.id
+353029,1027,UTUL UNS ,40,https://spmb.uns.ac.id
+381016,1004,SNBP,24,https://ppmb.unair.ac.id
+381016,1004,SNBT,36,https://ppmb.unair.ac.id
+381016,1004,SMUA,60,https://ppmb.unair.ac.id
+382040,2002,SNBP,33,https://www.its.ac.id/admission/
+382040,2002,SNBT,52,https://www.its.ac.id/admission/
+382040,2002,Golden Ticket ,10,https://www.its.ac.id/admission/
+382040,2002,Seleksi Kemitraan dan Mandiri,45,https://www.its.ac.id/admission/
+382040,2002, Seleksi Prestasi ITS,9,https://www.its.ac.id/admission/
+382003,2002,SNBP,40,https://www.its.ac.id/admission/
+382003,2002,SNBT,60,https://www.its.ac.id/admission/
+382003,2002,Golden Ticket ,26,https://www.its.ac.id/admission/
+382003,2002,Seleksi Kemitraan dan Mandir,50,https://www.its.ac.id/admission/
+382003,2002, Seleksi Prestasi ITS,25,https://www.its.ac.id/admission/
+302004,2002,Reguler ,35,https://www.its.ac.id/admission/
+302004,2002,Jalur Penelitian (By Research),12,https://www.its.ac.id/admission/
+372018,1019,SNBP,44,https://selma.ub.ac.id/
+372018,1019,SNBT,66,https://selma.ub.ac.id/
+372018,1019,Mandiri SPMK ,88,https://selma.ub.ac.id/
+372019,1019,Reguler ,35,https://selma.ub.ac.id/
+372020,1019,Reguler ,30,https://selma.ub.ac.id/
+301015,1001,SNBP,18,https://um.ugm.ac.id
+301015,1001,SNBT,18,https://um.ugm.ac.id
+301015,1001,PBUB,24,https://um.ugm.ac.id
+301015,1001,Seleksi Mandiri Jalur Prestasi,10,https://um.ugm.ac.id
+362018,1038,SNBP,8,http://pmb.uny.ac.id
+362018,1038,SNBT,12,http://pmb.uny.ac.id
+362018,1038,Jalur mandiri,20,http://pmb.uny.ac.id
+111030,1011,SNBP,36,https://pmb.usk.ac.id/
+111030,1011,SNBT,42,https://pmb.usk.ac.id/
+111030,1011,SMM PTN-Barat,29,https://pmb.usk.ac.id/
+111030,1011,Jalur Mandiri Unsyiah (JMU),42,https://pmb.usk.ac.id/
+49401,1003,SNBP,20,https://www.usu.ac.id/id/penerimaan
+49401,1003,SNBT,30,https://www.usu.ac.id/id/penerimaan
+49401,1003,Seleksi Mandiri Internasional ,6,https://www.usu.ac.id/id/penerimaan
+49401,1003,Seleksi Berbasis Prestasi Unggul Talenta USU (SBPU),8,https://www.usu.ac.id/id/penerimaan
+142073,1032,SNBP,20,https://spmb.unp.ac.id
+142073,1032,SNBT,26,https://spmb.unp.ac.id
+142073,1032,Jalur Mandiri dan Prestasi ,18,https://spmb.unp.ac.id
+142020,1032,SNBP,27,https://spmb.unp.ac.id
+142020,1032,SNBT,36,https://spmb.unp.ac.id
+142020,1032,Jalur Mandiri dan Prestasi ,18,https://spmb.unp.ac.id
+131030,1017,SNBP,27,http://pendaftaranulang.unri.ac.id/
+131030,1017,SNBT,36,http://pendaftaranulang.unri.ac.id/
+131030,1017,SMM PTN-Barat,6,http://pendaftaranulang.unri.ac.id/
+131030,1017,Penelusuran Bakat dan Minat (PBM),10,http://pendaftaranulang.unri.ac.id/
+131030,1017,Jalur Mandiri  Penerimaan Bibit Unggul Daerah (PBUD),27,http://pendaftaranulang.unri.ac.id/
+161021,1030,SNBP,24,https://regmaba.unib.ac.id
+161021,1030,SNBT,40,https://regmaba.unib.ac.id
+161021,1030,SMM PTN-Barat,18,https://regmaba.unib.ac.id
+161022,1030,Reguler ,40,https://regmaba.unib.ac.id
+511028,1022,SNBP,21,https://scmb.untan.ac.id
+511028,1022,SNBT,26,https://scmb.untan.ac.id
+511028,1022,Ujian Tulis Mandiri ,21,https://scmb.untan.ac.id
+531039,1010,SNBP,10,https://pmb.ulm.ac.id/
+531039,1010,SNBT,25,https://pmb.ulm.ac.id/
+531039,1010,Jalur Mandiri ,15,https://pmb.ulm.ac.id/
+542016,2013,SNBP,30,http://pmb.itk.ac.id/
+542016,2013,SNBT,27,http://pmb.itk.ac.id/
+542016,2013,Ujian Masuk Mandiri Terpadu (SUMMIT),20,http://pmb.itk.ac.id/
+541012,1015,SNBP,24,https://unmul.ac.id
+541012,1015,SNBT,39,https://unmul.ac.id
+541012,1015,SMMPTN UNMUL,15,https://unmul.ac.id
+752031,1047,SNBP,35,http://pmb.ung.ac.id/
+752031,1047,SNBT,28,http://pmb.ung.ac.id/
+752031,1047,Mandiri,2,http://pmb.ung.ac.id/
+712025,1036,SNBP,54,https://unm.ac.id/info-pmb/
+712025,1036,SNBT,63,https://unm.ac.id/info-pmb/
+712025,1036,Mandiri,45,https://unm.ac.id/info-pmb/
+711021,1005,SNBP,20,https://regpmb.unhas.ac.id
+711021,1005,SNBT,50,https://regpmb.unhas.ac.id
+711021,1005,Ketua Osis,14,https://regpmb.unhas.ac.id
+711021,1005,Mandiri,50,https://regpmb.unhas.ac.id
+711022,1005,Reguler ,45,https://regpmb.unhas.ac.id
+731022,1028,SNBP,18,https://pmb.untad.ac.id/
+731022,1028,SNBT,32,https://pmb.untad.ac.id/
+731022,1028,Mandiri,45,https://pmb.untad.ac.id/
+751081,1029,SNBP,24,https://spmb.uho.ac.id/
+751081,1029,SNBT,24,https://spmb.uho.ac.id/
+751081,1029,Mandiri,18,https://spmb.uho.ac.id/
+751039,1029,SNBP,24,https://spmb.uho.ac.id/
+751039,1029,SNBT,32,https://spmb.uho.ac.id/
+751039,1029,Mandiri,24,https://spmb.uho.ac.id/
+811030,1021,SNBP,25,https://pmb.unpatti.ac.id
+811030,1021,SNBT,45,https://pmb.unpatti.ac.id
+811030,1021,Mandiri,35,https://pmb.unpatti.ac.id
+911023,1018,SNBP,10,http://pmb.uncen.ac.id
+911023,1018,SNBT,18,http://pmb.uncen.ac.id
+911023,1018,Mandiri,25,http://pmb.uncen.ac.id
