@@ -29,7 +29,7 @@ con <- dbConnect(MySQL(),
 # Tabel Wilayah
 dbExecute(con, "CREATE TABLE IF NOT EXISTS Wilayah (
     id_wilayah INT PRIMARY KEY,
-    Nama_Kabkota VARCHAR(255),
+    nama_kabkota VARCHAR(255),
     nama_prov VARCHAR(255)
 );")
 
