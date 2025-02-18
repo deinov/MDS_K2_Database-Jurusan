@@ -1,4 +1,4 @@
-# Script Pembuatan Database dan Tabel MySQL di R
+# Script Pembuatan Database dan Tabel MySQL di RShiny
 
 library(DBI)
 library(RMySQL)
