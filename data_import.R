@@ -1,5 +1,3 @@
-# Script Import Data dari GitHub ke MySQL
-
 library(DBI)
 library(RMySQL)
 library(dplyr)
@@ -8,7 +6,7 @@ library(dplyr)
 con <- dbConnect(MySQL(), 
                  dbname = "K2JURUSAN", 
                  host = "127.0.0.1", 
-                 port = 3306, 
+                 port = 3307, 
                  user = "root", 
                  password = "")
 
