@@ -1,3 +1,3 @@
 ### Anggap Gambar ERD
 
-Interpretasi: blablabla
+Interpretasi: ulang
