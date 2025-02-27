@@ -1,7 +1,18 @@
 # Dokumentasi Proyek Database K2JURUSAN
 
 ## 1. Pendahuluan
-Proyek ini bertujuan untuk membangun sistem database untuk pengelolaan data perguruan tinggi, termasuk informasi tentang wilayah, universitas, program studi (prodi), dan jalur masuk. Database ini dibuat menggunakan MySQL melalui **dbngin**, sementara semua operasi pembuatan tabel dan impor data dilakukan menggunakan **R**. Selain itu, sebuah dashboard interaktif dibangun menggunakan **R Shiny** untuk memvisualisasikan data.
+Dalam era digital, pengelolaan data perguruan tinggi yang efisien sangat penting untuk mendukung pengambilan keputusan yang berbasis data. Data terkait wilayah, universitas, program studi (prodi), dan jalur masuk perlu disimpan dalam suatu sistem database yang terstruktur, mudah diakses, dan dapat divisualisasikan secara interaktif.
+
+Teknologi yang digunakan :
+Database:
+MySQL (via dbngin) → Digunakan untuk menyimpan data secara terstruktur.
+R (RMySQL dan DBI package) → Untuk koneksi ke database, pembuatan tabel, dan impor data.
+
+Pengolahan Data:
+R (tidyverse, dplyr, readr, DBI) → Digunakan untuk pembersihan, manipulasi, dan transformasi data sebelum dimasukkan ke dalam database.
+
+Visualisasi & Dashboard:
+R Shiny → Untuk membangun antarmuka pengguna interaktif yang memungkinkan eksplorasi data perguruan tinggi dalam bentuk grafik, tabel, dan filter dinamis.
 
 ## 2. Struktur Database
 Database ini dinamakan **K2JURUSAN** dan terdiri dari empat tabel utama:
