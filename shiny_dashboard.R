@@ -10,7 +10,7 @@ library(leaflet)
 
 # Koneksi ke MySQL
 con <- dbConnect(MySQL(), dbname = "K2JURUSAN", host = "127.0.0.1", 
-                 port = 3306, user = "root", password = "")
+                 port = 3307, user = "root", password = "")
 
 # UI Dashboard
 ui <- dashboardPage(
@@ -41,6 +41,17 @@ ui <- dashboardPage(
                 box(title = "Distribusi Akreditasi Program Studi", 
                     plotlyOutput("akreditasi_prodi_plot"), width = 6)  # Ganti plotOutput jadi plotlyOutput
               )
+      ),
+      
+      # Tab Wilayah
+      tabItem(tabName = "wilayah",
+              fluidRow(
+                box(title = "Data Wilayah", width = 6, 
+                    DTOutput("tabel_wilayah")),
+                box(title = "Grafik Kabupaten/Kota per Provinsi", width = 6, 
+                    plotlyOutput("grafik_wilayah"))
+              )
+              
       )
     )
   )
@@ -95,6 +106,46 @@ server <- function(input, output, session) {
           zaxis = list(title = "Frekuensi")
         )
       )
+  })
+  
+  # Ambil Data Wilayah dari Database
+  wilayah_data <- reactive({
+    dbGetQuery(con, "SELECT id_wilayah, Nama_Kabkota, nama_prov FROM Wilayah")
+  })
+  
+  # Tabel Data Wilayah
+  output$tabel_wilayah <- renderDT({
+    datatable(wilayah_data(), options = list(pageLength = 5))
+  })
+  
+  # Grafik Distribusi Kabupaten/Kota per Provinsi
+  output$grafik_wilayah <- renderPlotly({
+    data <- wilayah_data() %>%
+      group_by(nama_prov) %>%
+      summarise(jumlah_kabkota = n())
+    
+    plot_ly(data, x = ~nama_prov, y = ~jumlah_kabkota, type = "bar", color = ~nama_prov) %>%
+      layout(title = "Jumlah Kabupaten/Kota per Provinsi",
+             xaxis = list(title = "Provinsi"),
+             yaxis = list(title = "Jumlah Kabupaten/Kota"))
+  })
+  
+  # Pie Chart Persentase Kabupaten/Kota per Provinsi
+  output$pie_wilayah <- renderPlotly({
+    data <- wilayah_data() %>%
+      group_by(nama_prov) %>%
+      summarise(jumlah_kabkota = n())
+    
+    plot_ly(data, labels = ~nama_prov, values = ~jumlah_kabkota, type = "pie", textinfo = "label+percent") %>%
+      layout(title = "Persentase Kabupaten/Kota per Provinsi")
+  })
+  
+  # Word Cloud Nama Kabupaten/Kota
+  output$wordcloud_wilayah <- renderPlot({
+    library(wordcloud)
+    data <- wilayah_data()
+    
+    wordcloud(words = data$Nama_Kabkota, scale = c(3, 0.5), max.words = 50, colors = rainbow(7))
   })
   
   # Disconnect dari database saat aplikasi ditutup
