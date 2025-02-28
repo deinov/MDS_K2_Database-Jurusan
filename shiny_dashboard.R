@@ -52,6 +52,27 @@ ui <- dashboardPage(
                     plotlyOutput("grafik_wilayah"))
               )
               
+      ),
+      
+      # Tab Jalur Masuk
+      tabItem(tabName = "jalur_masuk",
+              fluidRow(
+                box(title = "Pilih Universitas", width = 6,
+                    selectInput("pilih_univ", "Universitas:", choices = NULL)
+                ),
+                box(title = "Total Daya Tampung", width = 6,
+                    valueBoxOutput("total_daya_tampung"))
+              ),
+              fluidRow(
+                box(title = "Data Jalur Masuk", width = 12, 
+                    DTOutput("tabel_jalur"))
+              ),
+              fluidRow(
+                box(title = "Grafik Daya Tampung per Jalur Masuk", width = 6, 
+                    plotlyOutput("grafik_jalur")),
+                box(title = "Persentase Daya Tampung per Jalur Masuk", width = 6, 
+                    plotlyOutput("pie_jalur"))
+              )
       )
     )
   )
@@ -147,6 +168,61 @@ server <- function(input, output, session) {
     
     wordcloud(words = data$Nama_Kabkota, scale = c(3, 0.5), max.words = 50, colors = rainbow(7))
   })
+  
+  
+  # Ambil Data Jalur Masuk dari Database
+  jalur_data <- reactive({
+    dbGetQuery(con, "SELECT id_prodi, id_univ, jalur_masuk, daya_tampung, website FROM jalur_masuk")
+  })
+  
+  # Perbarui Pilihan Universitas dalam Dropdown
+  observe({
+    data <- jalur_data()
+    updateSelectInput(session, "pilih_univ", choices = unique(data$id_univ))
+  })
+  
+  # Filter Data Berdasarkan Universitas yang Dipilih
+  data_filtered <- reactive({
+    data <- jalur_data()
+    if (!is.null(input$pilih_univ)) {
+      data <- data %>% filter(id_univ == input$pilih_univ)
+    }
+    return(data)
+  })
+  
+  # Tampilkan Tabel Jalur Masuk
+  output$tabel_jalur <- renderDT({
+    datatable(data_filtered(), options = list(pageLength = 5))
+  })
+  
+  # Hitung Total Daya Tampung
+  output$total_daya_tampung <- renderValueBox({
+    total <- sum(data_filtered()$daya_tampung, na.rm = TRUE)
+    valueBox(total, "Total Daya Tampung", icon = icon("users"), color = "blue")
+  })
+  
+  # Grafik Daya Tampung per Jalur Masuk
+  output$grafik_jalur <- renderPlotly({
+    data <- data_filtered() %>%
+      group_by(jalur_masuk) %>%
+      summarise(total_daya_tampung = sum(daya_tampung))
+    
+    plot_ly(data, x = ~jalur_masuk, y = ~total_daya_tampung, type = "bar", color = ~jalur_masuk) %>%
+      layout(title = "Daya Tampung per Jalur Masuk",
+             xaxis = list(title = "Jalur Masuk"),
+             yaxis = list(title = "Total Daya Tampung"))
+  })
+  
+  # Pie Chart Persentase Jalur Masuk
+  output$pie_jalur <- renderPlotly({
+    data <- data_filtered() %>%
+      group_by(jalur_masuk) %>%
+      summarise(total_daya_tampung = sum(daya_tampung))
+    
+    plot_ly(data, labels = ~jalur_masuk, values = ~total_daya_tampung, type = "pie", textinfo = "label+percent") %>%
+      layout(title = "Persentase Daya Tampung per Jalur Masuk")
+  })
+  
   
   # Disconnect dari database saat aplikasi ditutup
   onStop(function() {
