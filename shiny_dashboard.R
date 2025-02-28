@@ -73,11 +73,35 @@ ui <- dashboardPage(
                 box(title = "Persentase Daya Tampung per Jalur Masuk", width = 6, 
                     plotlyOutput("pie_jalur"))
               )
+      ),
+      
+      # Tab Program Studi
+      tabItem(tabName = "prodi",
+              fluidRow(
+                box(title = "Pilih Universitas", width = 6,
+                    selectInput("pilih_univ_prodi", "Universitas:", choices = NULL)
+                ),
+                box(title = "Total Mahasiswa", width = 6,
+                    valueBoxOutput("total_mahasiswa_prodi"))
+              ),
+              fluidRow(
+                box(title = "Data Program Studi", width = 12, 
+                    DTOutput("tabel_prodi"))
+              ),
+              fluidRow(
+                box(title = "Jumlah Mahasiswa per Program Studi", width = 6, 
+                    plotlyOutput("grafik_mahasiswa")),
+                box(title = "Jumlah Dosen per Program Studi", width = 6, 
+                    plotlyOutput("grafik_dosen"))
+              ),
+              fluidRow(
+                box(title = "Persentase Akreditasi Program Studi", width = 6, 
+                    plotlyOutput("pie_akreditasi"))
+              )
       )
     )
   )
 )
-
 # Server Dashboard
 server <- function(input, output, session) {
   
@@ -221,6 +245,72 @@ server <- function(input, output, session) {
     
     plot_ly(data, labels = ~jalur_masuk, values = ~total_daya_tampung, type = "pie", textinfo = "label+percent") %>%
       layout(title = "Persentase Daya Tampung per Jalur Masuk")
+  })
+  
+  
+  # Ambil Data Program Studi dari Database
+  prodi_data <- reactive({
+    dbGetQuery(con, "SELECT id_prodi, id_univ, nama_prodi, jumlah_dosen, jumlah_mahasiswa, akred_prodi, jenjang FROM prodi")
+  })
+  
+  # Perbarui Pilihan Universitas dalam Dropdown
+  observe({
+    data <- prodi_data()
+    updateSelectInput(session, "pilih_univ_prodi", choices = unique(data$id_univ))
+  })
+  
+  # Filter Data Berdasarkan Universitas yang Dipilih
+  data_filtered_prodi <- reactive({
+    data <- prodi_data()
+    if (!is.null(input$pilih_univ_prodi)) {
+      data <- data %>% filter(id_univ == input$pilih_univ_prodi)
+    }
+    return(data)
+  })
+  
+  # Tampilkan Tabel Program Studi
+  output$tabel_prodi <- renderDT({
+    datatable(data_filtered_prodi(), options = list(pageLength = 5))
+  })
+  
+  # Hitung Total Mahasiswa
+  output$total_mahasiswa_prodi <- renderValueBox({
+    total <- sum(data_filtered_prodi()$jumlah_mahasiswa, na.rm = TRUE)
+    valueBox(total, "Total Mahasiswa", icon = icon("users"), color = "blue")
+  })
+  
+  # Grafik Jumlah Mahasiswa per Program Studi
+  output$grafik_mahasiswa <- renderPlotly({
+    data <- data_filtered_prodi() %>%
+      arrange(desc(jumlah_mahasiswa)) %>%
+      head(10)  # Ambil 10 prodi teratas berdasarkan jumlah mahasiswa
+    
+    plot_ly(data, x = ~nama_prodi, y = ~jumlah_mahasiswa, type = "bar", color = ~nama_prodi) %>%
+      layout(title = "Jumlah Mahasiswa per Program Studi",
+             xaxis = list(title = "Program Studi", tickangle = -45),
+             yaxis = list(title = "Jumlah Mahasiswa"))
+  })
+  
+  # Grafik Jumlah Dosen per Program Studi
+  output$grafik_dosen <- renderPlotly({
+    data <- data_filtered_prodi() %>%
+      arrange(desc(jumlah_dosen)) %>%
+      head(10)  # Ambil 10 prodi teratas berdasarkan jumlah dosen
+    
+    plot_ly(data, x = ~nama_prodi, y = ~jumlah_dosen, type = "bar", color = ~nama_prodi) %>%
+      layout(title = "Jumlah Dosen per Program Studi",
+             xaxis = list(title = "Program Studi", tickangle = -45),
+             yaxis = list(title = "Jumlah Dosen"))
+  })
+  
+  # Pie Chart Persentase Akreditasi Program Studi
+  output$pie_akreditasi <- renderPlotly({
+    data <- data_filtered_prodi() %>%
+      group_by(akred_prodi) %>%
+      summarise(jumlah_prodi = n())
+    
+    plot_ly(data, labels = ~akred_prodi, values = ~jumlah_prodi, type = "pie", textinfo = "label+percent") %>%
+      layout(title = "Persentase Akreditasi Program Studi")
   })
   
   
