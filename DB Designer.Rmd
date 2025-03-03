@@ -1,48 +1,49 @@
 # REFERENTIAL INTEGRITY CONSTRAINTS
 
 ```{r}
-knitr::include_graphics("C:/Users/Zamrah/Downloads/WhatsApp Image 2025-02-17 at 17.50.36_bee3ac8e.jpg")
+knitr::include_graphics("D:\\Semester 2\\MDS\\Contraints.jpg")
 ```
+<br>
+Referential Integrity Constraint memastikan bahwa nilai dalam kolom Foreign Key (FK) selalu memiliki pasangan yang valid dalam kolom Primary Key (PK) dari tabel referensinya. Relational Schema dari database yang terdiri dari beberapa tabel dengan atribut-atributnya. Berikut interpretasinya: <br>
 
-Referential Integrity Constraint memastikan bahwa nilai dalam kolom Foreign Key (FK) selalu memiliki pasangan yang valid dalam kolom Primary Key (PK) dari tabel referensinya. Relational Schema dari database yang terdiri dari beberapa tabel dengan atribut-atributnya. Berikut interpretasinya:
-
-1.  Tabel WILAYAH 
-Primary Key (PK): **ID_Wilayah** 
-Atribut lain: Nama_KabKot, Nama_Prov
-
-2.  Tabel UNIVERSITAS 
-Primary Key (PK): **ID_Univ** 
-Foreign Key (FK): ID_Wilayah (menghubungkan ke WILAYAH) 
-Atribut lain: Nama_Univ, Akred_Univ
-
-3.  Tabel JALUR MASUK 
-Primary Key (PK): **ID_Jalur** 
-Foreign Key (FK): ID_Prodi, ID_Univ (menghubungkan ke UNIVERSITAS dan PROGRAM STUDI)
-Atribut lain: Akred_Univ, Daya_Tampung, Website
-
-4.  Tabel PROGRAM STUDI 
-Primary Key (PK): **ID_Prodi** 
-Foreign Key (FK): ID_Univ (menghubungkan ke UNIVERSITAS)
-Atribut lain: Nama_Prodi, Jumlah_Dosen, Jumlah_Mhs, Akreditasi, Jenjang
+1.  Tabel WILAYAH <br>
+Primary Key (PK): **ID_Wilayah** <br>
+Atribut lain: Nama_KabKot, Nama_Prov <br>
+<br>
+2.  Tabel UNIVERSITAS <br>
+Primary Key (PK): **ID_Univ** <br>
+Foreign Key (FK): ID_Wilayah (menghubungkan ke WILAYAH) <br>
+Atribut lain: Nama_Univ, Akred_Univ <br>
+<br>
+3.  Tabel JALUR MASUK <br>
+Primary Key (PK): **ID_Jalur** <br>
+Foreign Key (FK): ID_Prodi, ID_Univ (menghubungkan ke UNIVERSITAS dan PROGRAM STUDI) <br>
+Atribut lain: Akred_Univ, Daya_Tampung, Website <br>
+<br>
+4.  Tabel PROGRAM STUDI <br>
+Primary Key (PK): **ID_Prodi** <br>
+Foreign Key (FK): ID_Univ (menghubungkan ke UNIVERSITAS) <br>
+Atribut lain: Nama_Prodi, Jumlah_Dosen, Jumlah_Mhs, Akreditasi, Jenjang <br>
 
 # ENTITY RELATIONSHIP DIAGRAM
 
 ```{r}
-knitr::include_graphics("C:/Users/Zamrah/Downloads/WhatsApp Image 2025-02-17 at 20.31.24_1db8d128.jpg")
+knitr::include_graphics("D:\\Semester 2\\MDS\\ERD.jpg")
 ```
+<br>
 Entity Relationship Diagram (ERD) yang menjelaskan hubungan antar entitas dalam sistem. Berikut interpretasinya:
-
-1. Entitas WILAYAH
-Hubungan: One to Many (1:N) dengan UNIVERSITAS, artinya *satu wilayah memiliki banyak universitas*.
-
-
-2. Entitas UNIVERSITAS
-Hubungan:
-One to Many (1:N) dengan PRODI, artinya *satu universitas memiliki banyak program studi*.
-Many to Many (N:M) dengan JALUR MASUK dan atribut "website" menjadi Relation Entity, artinya *satu universitas memiliki beberapa jalur masuk, dan satu jalur masuk bisa digunakan oleh beberapa universitas*.
-
-3. Entitas PRODI
-Hubungan:
-One to Many (1:N) dengan UNIVERSITAS, artinya *banyak program studi berada di satu universitas*.
-Many to Many (N:M) dengan JALUR MASUK dan "daya tampung" menjadi Relation Entity, artinya *banyak program studi bisa memiliki banyak jalur masuk*.
+<br>
+1. Entitas WILAYAH <br>
+Hubungan: <br>
+One to Many (1:N) dengan UNIVERSITAS, artinya **satu wilayah memiliki banyak universitas**. <br>
+<br>
+2. Entitas UNIVERSITAS <br>
+Hubungan: <br>
+One to Many (1:N) dengan PRODI, artinya **satu universitas memiliki banyak program studi**. <br>
+Many to Many (N:M) dengan JALUR MASUK dan atribut "website" menjadi Relation Entity, artinya **satu universitas memiliki beberapa jalur masuk, dan satu jalur masuk bisa digunakan oleh beberapa universitas**. <br>
+<br>
+3. Entitas PRODI <br>
+Hubungan: <br>
+One to Many (1:N) dengan UNIVERSITAS, artinya **banyak program studi berada di satu universitas**. <br>
+Many to Many (N:M) dengan JALUR MASUK dan "daya tampung" menjadi Relation Entity, artinya **banyak program studi bisa memiliki banyak jalur masuk**.
 
