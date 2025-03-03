@@ -62,9 +62,13 @@ ui <- dashboardPage(
                     DTOutput("tabel_wilayah")),
                 box(title = "Grafik Kabupaten/Kota per Provinsi", width = 6, 
                     plotlyOutput("grafik_wilayah"))
+              ),
+              fluidRow(
+                box(title = "Peta Sebaran Universitas", width = 12, 
+                    leafletOutput("peta_universitas", height = 500))
               )
-              
       ),
+      
       
       # Tab Jalur Masuk
       tabItem(tabName = "jalur_masuk",
@@ -185,6 +189,28 @@ server <- function(input, output, session) {
       layout(title = "Jumlah Kabupaten/Kota per Provinsi",
              xaxis = list(title = "Provinsi"),
              yaxis = list(title = "Jumlah Kabupaten/Kota"))
+  })
+  # Ambil Data Universitas untuk Peta
+  universitas_data <- reactive({
+    dbGetQuery(con, "SELECT nama_univ, latitude, longitude FROM Universitas")
+  })
+  
+  # Peta Sebaran Universitas
+  output$peta_universitas <- renderLeaflet({
+    data <- universitas_data()
+    
+    leaflet(data) %>%
+      addTiles() %>%
+      addCircleMarkers(
+        lng = ~longitude, lat = ~latitude,
+        popup = ~nama_univ,
+        radius = 5,
+        color = "blue",
+        fillOpacity = 0.7
+      ) %>%
+      setView(lng = mean(data$longitude, na.rm = TRUE), 
+              lat = mean(data$latitude, na.rm = TRUE), 
+              zoom = 5)
   })
   
   # Pie Chart Persentase Kabupaten/Kota per Provinsi
