@@ -81,6 +81,9 @@ universitas <- read.csv(url_universitas)
 dbWriteTable(con, "Universitas", universitas, append = TRUE, row.names = FALSE)
 ```
 
+### Diagram ER
+![ERD Novel](https://github.com/deinov/MDS_K2_Database-Jurusan/blob/Designer-DB/ERD.jpg)
+
 ## 4. Dashboard R Shiny
 ### **Fitur Dashboard**
 Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format **tabel interaktif** dan **grafik visualisasi**:
