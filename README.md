@@ -123,20 +123,26 @@ library(DT)
 
 ## Tim Penulis
 
-Front-End Developer 
-Claudian Tikulimbong Tangdilomban
+Front-End Developer : Claudian Tikulimbong Tangdilomban
+- ** Desain UI (User Interface)
+- ** Interaktivitas dengan Pengguna
+- ** Visualisasi Data
+- ** Optimasi UI/UX
+- ** Testing dan Debugging
 
-Back-End
-Jefita Resti Sari
 
-Designer DB
-Zamrah Mutmainah
+Back-End : Jefita Resti Sari
+- ** 
 
-DB Manager
-I Putu Gde Inove Bagus Prasetya
+Designer DB : Zamrah Mutmainah
+- ** Menganalisis kebutuhan data, merancang skema database (seperti tabel, relasi, dan indeks), serta memastikan integritas data dan keamanan sistem.
 
-Technical Writer
-Carlya Agmis Aimandiga
+DB Manager : I Putu Gde Inove Bagus Prasetya
+- ** 
+
+Technical Writer : Carlya Agmis Aimandiga
+- ** Menyusun dokumentasi dan visualisasi header
+-  ** Mengelola knowledge base untuk tim dan pengguna
 
 
 ## 5. Kesimpulan
