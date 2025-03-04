@@ -84,6 +84,22 @@ dbWriteTable(con, "Universitas", universitas, append = TRUE, row.names = FALSE)
 ### Diagram ER
 ![ERD Novel](https://github.com/deinov/MDS_K2_Database-Jurusan/blob/Designer-DB/ERD.jpg)
 
+Entity Relationship Diagram (ERD) yang menjelaskan hubungan antar entitas dalam sistem. Berikut interpretasinya:
+
+1. Entitas WILAYAH
+Hubungan: One to Many (1:N) dengan UNIVERSITAS, artinya *satu wilayah memiliki banyak universitas*.
+
+
+2. Entitas UNIVERSITAS
+Hubungan:
+One to Many (1:N) dengan PRODI, artinya *satu universitas memiliki banyak program studi*.
+Many to Many (N:M) dengan JALUR MASUK dan atribut "website" menjadi Relation Entity, artinya *satu universitas memiliki beberapa jalur masuk, dan satu jalur masuk bisa digunakan oleh beberapa universitas*.
+
+3. Entitas PRODI
+Hubungan:
+One to Many (1:N) dengan UNIVERSITAS, artinya *banyak program studi berada di satu universitas*.
+Many to Many (N:M) dengan JALUR MASUK dan "daya tampung" menjadi Relation Entity, artinya *banyak program studi bisa memiliki banyak jalur masuk*.
+
 ## 4. Dashboard R Shiny
 ### **Fitur Dashboard**
 Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format **tabel interaktif** dan **grafik visualisasi**:
@@ -108,6 +124,16 @@ library(DT)
 ## Tim Penulis
 
 Front-End Developer 
+Claudian Tikulimbong Tangdilomban
+
+Back-End
+Jefita Resti Sari
+
+Designer DB
+Zamrah Mutmainah
+
+DB Manager
+I Putu Gde Inove Bagus Prasetya
 
 
 ## 5. Kesimpulan
