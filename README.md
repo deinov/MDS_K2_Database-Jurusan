@@ -135,6 +135,9 @@ Zamrah Mutmainah
 DB Manager
 I Putu Gde Inove Bagus Prasetya
 
+Technical Writer
+Carlya Agmis Aimandiga
+
 
 ## 5. Kesimpulan
 Proyek ini berhasil membangun **database K2JURUSAN** di MySQL, melakukan **impor data dari GitHub**, serta **menyajikan data dalam dashboard interaktif menggunakan R Shiny**. Sistem ini dapat digunakan untuk **analisis data perguruan tinggi, perbandingan daya tampung, serta distribusi akreditasi universitas dan program studi**.
