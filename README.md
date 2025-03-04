@@ -102,6 +102,11 @@ library(DT)
 ```
 (Catatan: Kode lengkap dashboard dapat dilihat di file `shiny_dashboard.R`)
 
+## Tim Penulis
+
+Front-End Developer 
+
+
 ## 5. Kesimpulan
 Proyek ini berhasil membangun **database K2JURUSAN** di MySQL, melakukan **impor data dari GitHub**, serta **menyajikan data dalam dashboard interaktif menggunakan R Shiny**. Sistem ini dapat digunakan untuk **analisis data perguruan tinggi, perbandingan daya tampung, serta distribusi akreditasi universitas dan program studi**.
 
