@@ -47,7 +47,7 @@ Untuk mencapai tujuan tersebut, proyek ini memanfaatkan beberapa teknologi dan t
 
 Dengan menggabungkan kekuatan database, pengolahan data, dan visualisasi interaktif, proyek ini bertujuan untuk menciptakan sistem yang tidak hanya menyimpan data dengan baik, tetapi juga menyajikannya dalam bentuk yang mudah dipahami dan dapat diakses oleh berbagai pihak.
 
-## **Diagram ER**
+## **Entity Relationship Diagram (ERD)**
 ![ERD Novel](https://github.com/deinov/MDS_K2_Database-Jurusan/blob/Designer-DB/ERD.jpg)
 
 Entity Relationship Diagram (ERD) yang menjelaskan hubungan antar entitas dalam sistem. Berikut interpretasinya:
@@ -66,6 +66,12 @@ Hubungan: <br>
 One to Many (1:N) dengan UNIVERSITAS, artinya *banyak program studi berada di satu universitas*.
 Many to Many (N:M) dengan JALUR MASUK dan "daya tampung" menjadi Relation Entity, artinya *banyak program studi bisa memiliki banyak jalur masuk*. <br>
 
+*catatan*: <br>
+1. Penambahan Atribut <br>
+Terdapat penambahan atribut pada entitas Universitas dan Jalur masuk. Pada Entitas `Universitas` ditambahkan atribut `longitude` dan `latitude` untuk tujuan visualisasi data di RShiny, sedangkan penambahan pada entitas `Jalur masuk` adalah atribut `id_jalur` karena pada entitas tersebut tidak terdapat Primary key atau kode yang unik, untuk menghindari adanya redudansi serta anomali maka dilakukan penambahan atribut yaitu `id_jalur` sebagai primay key dari `jalur masuk`.
+2. Temuan (Anomali) <br>
+Pada data `jalur masuk`, ditemukan duplikasi data dimana terdapat dua tuple/baris yang sama persis tanpa perbedaan maka perlu dilakukan penghapusan pada salah satu tuple karena berdasarkan hasil analisis kelompok dicurigai tersapat kesalahan input data manual.
+
 ## **Struktur Database**
 Database ini dinamakan **K2JURUSAN** dan terdiri dari empat tabel utama:
 
@@ -81,6 +87,8 @@ Menyimpan informasi tentang universitas.
 - `id_wilayah` (INT, Foreign Key ke Wilayah)
 - `nama_univ` (VARCHAR) – Nama universitas
 - `akred_univ` (CHAR) – Akreditasi universitas
+- `longitude` (DECIMAL) - Longitude 
+- `latitude` (DECIMAL) - Latitude
 
 ### **Tabel Prodi (Program Studi)**
 Menyimpan informasi tentang program studi di setiap universitas.
@@ -169,9 +177,9 @@ library(DT)
 4. **Entitas Jalur Masuk**  
    Entitas jalur masuk mencatat informasi seperti `id_jalur`, `id_univ`, `id_prodi`, `website`, `daya_tampung`, dan `jalur_masuk`. Atribut `id_jalur` ditambahkan sebagai kode unik untuk menghindari anomali dan redundansi data. Entitas ini membantu dalam memahami variasi jalur penerimaan mahasiswa dan kapasitas penerimaan di setiap program studi.  
 
-   Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
+Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
 
-   Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
+Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
 
 ## **Pengembangan Selanjutnya**
 Untuk pengembangan lebih lanjut, sistem ini dapat diperluas dengan fitur:
