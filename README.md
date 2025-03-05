@@ -20,7 +20,7 @@
 
 ## **Pendahuluan**  
 
-   Pendidikan tinggi di Indonesia memiliki keragaman yang tinggi, baik dari segi jumlah universitas, program studi, maupun jalur masuk yang ditawarkan. Namun, informasi ini seringkali tersebar di berbagai sumber dan tidak terintegrasi dengan baik. Hal ini menyulitkan calon mahasiswa, peneliti, atau pemangku kebijakan dalam mengakses dan menganalisis data secara efektif. Oleh karena itu, dibutuhkan sistem database yang terpusat dan terstruktur untuk mengintegrasikan data tersebut, serta menyajikannya dalam bentuk yang mudah dipahami.
+> Pendidikan tinggi di Indonesia memiliki keragaman yang tinggi, baik dari segi jumlah universitas, program studi, maupun jalur masuk yang ditawarkan. Namun, informasi ini seringkali tersebar di berbagai sumber dan tidak terintegrasi dengan baik. Hal ini menyulitkan calon mahasiswa, peneliti, atau pemangku kebijakan dalam mengakses dan menganalisis data secara efektif. Oleh karena itu, dibutuhkan sistem database yang terpusat dan terstruktur untuk mengintegrasikan data tersebut, serta menyajikannya dalam bentuk yang mudah dipahami.
 
    Di era digital yang semakin didorong oleh data, pengelolaan informasi perguruan tinggi yang efisien dan terstruktur menjadi kunci penting dalam mendukung pengambilan keputusan yang akurat dan berbasis data. Data seperti lokasi wilayah, informasi universitas, program studi (prodi), dan jalur masuk merupakan aset berharga yang perlu disimpan, diolah, dan disajikan dengan baik. Sistem database yang terstruktur tidak hanya memudahkan penyimpanan data, tetapi juga memungkinkan analisis mendalam dan visualisasi interaktif yang dapat membantu berbagai pihak, mulai dari calon mahasiswa, peneliti, hingga pemangku kebijakan.
 
@@ -142,10 +142,10 @@ dbWriteTable(con, "Universitas", universitas, append = TRUE, row.names = FALSE)
 
 ## **Dashboard R Shiny**
 ### Fitur Dashboard
-Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format **tabel interaktif** dan **grafik visualisasi**:
-✅ **Menampilkan tabel dari database**
-✅ **Visualisasi akreditasi universitas dan prodi**
-✅ **Filter dan pencarian data**
+Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format **tabel interaktif** dan **grafik visualisasi**: <br>
+✅ **Menampilkan tabel dari database**  <br>
+✅ **Visualisasi akreditasi universitas dan prodi**  <br>
+✅ **Filter dan pencarian data**  <br>
 
 ### Tampilan Dashboard
 Tampilan dashboard dibuat lebih elegan dengan tema `flatly`, serta warna yang berbeda untuk setiap kategori akreditasi.
