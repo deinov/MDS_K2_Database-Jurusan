@@ -87,17 +87,18 @@ dbWriteTable(con, "Universitas", universitas, append = TRUE, row.names = FALSE)
 Entity Relationship Diagram (ERD) yang menjelaskan hubungan antar entitas dalam sistem. Berikut interpretasinya:
 
 1. Entitas WILAYAH <br>
-Hubungan: One to Many (1:N) dengan UNIVERSITAS, artinya *satu wilayah memiliki banyak universitas*.
+Hubungan:  <br>
+One to Many (1:N) dengan UNIVERSITAS, artinya *satu wilayah memiliki banyak universitas*.
 
-2. Entitas UNIVERSITAS
-Hubungan:
+2. Entitas UNIVERSITAS <br>
+Hubungan: <br>
 One to Many (1:N) dengan PRODI, artinya *satu universitas memiliki banyak program studi*.
 Many to Many (N:M) dengan JALUR MASUK dan atribut "website" menjadi Relation Entity, artinya *satu universitas memiliki beberapa jalur masuk, dan satu jalur masuk bisa digunakan oleh beberapa universitas*.
 
-3. Entitas PRODI
-Hubungan:
+3. Entitas PRODI <br>
+Hubungan: <br>
 One to Many (1:N) dengan UNIVERSITAS, artinya *banyak program studi berada di satu universitas*.
-Many to Many (N:M) dengan JALUR MASUK dan "daya tampung" menjadi Relation Entity, artinya *banyak program studi bisa memiliki banyak jalur masuk*.
+Many to Many (N:M) dengan JALUR MASUK dan "daya tampung" menjadi Relation Entity, artinya *banyak program studi bisa memiliki banyak jalur masuk*. <br>
 
 ## 4. Dashboard R Shiny
 ### **Fitur Dashboard**
