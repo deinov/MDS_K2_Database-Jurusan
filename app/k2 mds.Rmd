@@ -1,0 +1,304 @@
+---
+title: "Data Jurusan"
+author: "Gde Inov"
+date: "2025-02-13"
+output: html_document
+runtime: shiny
+---
+```{r}
+library(DBI)
+library(RMySQL)
+
+# 1. Konfigurasi Database DBngin
+db_config <- list(
+  host = "127.0.0.1",
+  port = 3307,          # Port MySQL di DBngin
+  user = "root",
+  password = "",
+  dbname = "Jeje", #ganti sesuai DBngin
+  allowLocalInfile = TRUE
+)
+```
+
+
+```{r}
+# Buat Database K2JURUSAN jika belum ada
+dbExecute(con, "CREATE DATABASE IF NOT EXISTS K2JURUSAN;")
+
+# Tutup koneksi sementara
+dbDisconnect(con)
+```
+```{r}
+#2. Membuat koneksi ke MySQL server (tanpa database spesifik)
+con <- dbConnect(
+  MySQL(),
+  host = db_config$host,
+  port = db_config$port,
+  user = db_config$user,
+  password = db_config$password,
+  dbname = db_config$dbname
+)
+```
+
+```{r}
+# Tabel Wilayah
+dbExecute(con, "CREATE TABLE IF NOT EXISTS Wilayah (
+    id_wilayah INT PRIMARY KEY,
+    Nama_Kabkota VARCHAR(255),
+    nama_prov VARCHAR(255)
+);")
+
+# Tabel Universitas
+dbExecute(con, "CREATE TABLE IF NOT EXISTS Universitas (
+    id_univ INT PRIMARY KEY AUTO_INCREMENT,
+    id_wilayah INT,
+    nama_univ VARCHAR(255) NOT NULL,
+    akred_univ CHAR(1),
+    latitude INT,
+    longitude INT,
+    FOREIGN KEY (id_wilayah) REFERENCES Wilayah(id_wilayah) ON DELETE SET NULL
+);")
+
+# Tabel Prodi
+dbExecute(con, "CREATE TABLE IF NOT EXISTS Prodi (
+    id_prodi INT PRIMARY KEY AUTO_INCREMENT,
+    id_univ INT,
+    nama_prodi VARCHAR(255) NOT NULL,
+    jumlah_dosen INT,
+    jumlah_mahasiswa INT,
+    akred_prodi CHAR(1),
+    jenjang VARCHAR(50),
+    FOREIGN KEY (id_univ) REFERENCES Universitas(id_univ) ON DELETE CASCADE
+);")
+
+# Tabel Jalur Masuk
+dbExecute(con, "CREATE TABLE IF NOT EXISTS Jalur_Masuk (
+    id_jalur INT PRIMARY KEY AUTO_INCREMENT,
+    id_prodi INT,
+    id_univ INT,
+    jalur_masuk VARCHAR(255) NOT NULL,
+    daya_tampung INT,
+    website VARCHAR(255),
+    FOREIGN KEY (id_prodi) REFERENCES Prodi(id_prodi) ON DELETE CASCADE,
+    FOREIGN KEY (id_univ) REFERENCES Universitas(id_univ) ON DELETE CASCADE
+);")
+
+```
+
+```{r}
+dbGetQuery(con, "SHOW TABLES;")
+
+```
+
+```{r}
+# Load library
+library(DBI)
+library(RMySQL)
+library(dplyr)
+
+# URL dataset dari GitHub
+url_universitas <- "https://raw.githubusercontent.com/deinov/MDS_K2_Database-Jurusan/refs/heads/main/data/UNIVERSITAS.csv"
+url_wilayah <- "https://raw.githubusercontent.com/deinov/MDS_K2_Database-Jurusan/refs/heads/main/data/wilayah.csv"
+url_prodi <- "https://raw.githubusercontent.com/deinov/MDS_K2_Database-Jurusan/refs/heads/main/data/Prodi%20StatHub.csv"
+url_jalur_masuk <- "https://raw.githubusercontent.com/deinov/MDS_K2_Database-Jurusan/refs/heads/main/data/jalur%20masuk1.csv"
+
+# Membaca dataset dari GitHub
+universitas <- read.csv(url_universitas)
+wilayah <- read.csv(url_wilayah)
+prodi <- read.csv(url_prodi)
+jalur_masuk <- read.csv(url_jalur_masuk)
+
+# Cek struktur data
+str(universitas)
+str(wilayah)
+str(prodi)
+str(jalur_masuk)
+
+```
+
+```{r}
+# Pastikan hanya kolom yang sesuai dengan tabel MySQL yang digunakan
+universitas <- universitas %>% select(id_univ, id_wilayah, nama_univ, akred_univ, latitude, longitude)
+wilayah <- wilayah %>% select(id_wilayah, Nama_Kabkota, nama_prov)
+prodi <- prodi %>% select(id_prodi, id_univ, nama_prodi, jumlah_dosen, jumlah_mahasiswa, akred_prodi, jenjang)
+jalur_masuk <- jalur_masuk %>% select(id_prodi, id_univ, jalur_masuk, daya_tampung, website)
+
+```
+
+```{r}
+# Koneksi ke database K2JURUSAN
+con <- dbConnect(MySQL(), 
+                 dbname = "Jeje", 
+                 host = "127.0.0.1", 
+                 port = 3307, 
+                 user = "root", 
+                 password = "")
+
+```
+
+```{r}
+# Fungsi untuk memasukkan data dengan aman
+insert_data_safe <- function(con, table_name, data) {
+  for (i in 1:nrow(data)) {
+    query <- sprintf("INSERT IGNORE INTO %s (%s) VALUES (%s);",
+                     table_name,
+                     paste(colnames(data), collapse = ", "),  # Nama kolom
+                     paste0("'", data[i, ], "'", collapse = ", "))  # Nilai data
+    
+    tryCatch({
+      dbExecute(con, query)
+    }, error = function(e) {
+      message(paste("⚠️ Gagal memasukkan data ke", table_name, ":", e$message))
+    })
+  }
+  message(paste("✅ Data baru berhasil ditambahkan ke tabel", table_name))
+}
+
+# Memasukkan data ke MySQL
+insert_data_safe(con, "Wilayah", wilayah)
+insert_data_safe(con, "Universitas", universitas)
+insert_data_safe(con, "Prodi", prodi)
+insert_data_safe(con, "Jalur_Masuk", jalur_masuk)
+
+```
+
+```{r}
+# Cek jumlah data dalam setiap tabel
+dbGetQuery(con, "SELECT COUNT(*) FROM Wilayah;")
+dbGetQuery(con, "SELECT COUNT(*) FROM Universitas;")
+dbGetQuery(con, "SELECT COUNT(*) FROM Prodi;")
+dbGetQuery(con, "SELECT COUNT(*) FROM Jalur_Masuk;")
+
+# Cek beberapa baris data
+dbGetQuery(con, "SELECT * FROM Universitas LIMIT 5;")
+
+```
+
+```{r}
+dbDisconnect(con)
+
+```
+
+```{r}
+# Load library
+library(DBI)
+library(RMySQL)
+library(dplyr)
+
+# Koneksi ke database K2JURUSAN
+con <- dbConnect(MySQL(), 
+                 dbname = "K2JURUSAN", 
+                 host = "127.0.0.1", 
+                 port = 3306, 
+                 user = "root", 
+                 password = "")
+
+# Cek jumlah data di setiap tabel
+cat("Jumlah Data dalam Setiap Tabel:\n")
+dbGetQuery(con, "SELECT 'Wilayah' AS tabel, COUNT(*) AS jumlah_data FROM Wilayah
+                 UNION ALL
+                 SELECT 'Universitas', COUNT(*) FROM Universitas
+                 UNION ALL
+                 SELECT 'Prodi', COUNT(*) FROM Prodi
+                 UNION ALL
+                 SELECT 'Jalur_Masuk', COUNT(*) FROM Jalur_Masuk;")
+
+# Cek beberapa data pertama di setiap tabel
+cat("\nPreview Data Wilayah:\n")
+dbGetQuery(con, "SELECT * FROM Wilayah LIMIT 5;")
+
+cat("\nPreview Data Universitas:\n")
+dbGetQuery(con, "SELECT * FROM Universitas LIMIT 5;")
+
+cat("\nPreview Data Prodi:\n")
+dbGetQuery(con, "SELECT * FROM Prodi LIMIT 5;")
+
+cat("\nPreview Data Jalur Masuk:\n")
+dbGetQuery(con, "SELECT * FROM Jalur_Masuk LIMIT 5;")
+
+# Tutup koneksi database
+dbDisconnect(con)
+
+```
+```{r}
+library(shiny)
+library(DBI)
+library(RMySQL)
+library(ggplot2)
+library(DT)
+library(shinythemes)
+
+# UI Dashboard dengan tema yang lebih elegan
+ui <- fluidPage(
+  theme = shinytheme("flatly"),
+  titlePanel(h1("Dashboard K2JURUSAN", align = "center")),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("tabel", "Pilih Tabel:", 
+                  choices = c("Wilayah", "Universitas", "Prodi", "Jalur_Masuk")),
+      actionButton("loadData", "Muat Data", class = "btn-primary")
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Tabel Data", DTOutput("dataTable")),
+        tabPanel("Visualisasi", plotOutput("plot", height = "500px"))
+      )
+    )
+  )
+)
+
+# Server Dashboard
+server <- function(input, output) {
+  
+  con <- dbConnect(MySQL(), dbname = "K2JURUSAN", host = "127.0.0.1", 
+                   port = 3306, user = "root", password = "")
+  
+  data_reactive <- eventReactive(input$loadData, {
+    query <- sprintf("SELECT * FROM %s;", input$tabel)
+    df <- dbGetQuery(con, query)
+    if("akred_univ" %in% colnames(df)) {
+      df$akred_univ <- factor(df$akred_univ, levels = c("U", "A", "B", "C"))
+    }
+    if("akred_prodi" %in% colnames(df)) {
+      df$akred_prodi <- factor(df$akred_prodi, levels = c("U", "A", "B", "C"))
+    }
+    return(df)
+  })
+  
+  output$dataTable <- renderDT({
+    datatable(data_reactive(), options = list(pageLength = 10, autoWidth = TRUE))
+  })
+  
+  output$plot <- renderPlot({
+    df <- data_reactive()
+    
+    if (input$tabel == "Universitas") {
+      ggplot(df, aes(x = akred_univ)) +
+        geom_bar(fill = "#3498db", color = "black") +
+        theme_minimal() +
+        labs(title = "Distribusi Akreditasi Universitas", x = "Akreditasi", y = "Jumlah") +
+        theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
+    } else if (input$tabel == "Prodi") {
+      ggplot(df, aes(x = akred_prodi, fill = akred_prodi)) +
+        geom_bar(color = "black") +
+        scale_fill_manual(values = c("#e74c3c", "#f39c12", "#2ecc71", "#3498db")) +
+        theme_minimal() +
+        labs(title = "Distribusi Akreditasi Prodi", x = "Akreditasi", y = "Jumlah") +
+        theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 16))
+    } else {
+      plot.new()
+      text(0.5, 0.5, "Tidak ada visualisasi untuk tabel ini", cex = 1.5)
+    }
+  })
+  
+  onStop(function() {
+    dbDisconnect(con)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+
+```
+
+
