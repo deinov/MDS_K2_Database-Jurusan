@@ -20,7 +20,7 @@
 
 ## **Pendahuluan**  
 
-*  * Pendidikan tinggi di Indonesia memiliki keragaman yang tinggi, baik dari segi jumlah universitas, program studi, maupun jalur masuk yang ditawarkan. Namun, informasi ini seringkali tersebar di berbagai sumber dan tidak terintegrasi dengan baik. Hal ini menyulitkan calon mahasiswa, peneliti, atau pemangku kebijakan dalam mengakses dan menganalisis data secara efektif. Oleh karena itu, dibutuhkan sistem database yang terpusat dan terstruktur untuk mengintegrasikan data tersebut, serta menyajikannya dalam bentuk yang mudah dipahami.
+   Pendidikan tinggi di Indonesia memiliki keragaman yang tinggi, baik dari segi jumlah universitas, program studi, maupun jalur masuk yang ditawarkan. Namun, informasi ini seringkali tersebar di berbagai sumber dan tidak terintegrasi dengan baik. Hal ini menyulitkan calon mahasiswa, peneliti, atau pemangku kebijakan dalam mengakses dan menganalisis data secara efektif. Oleh karena itu, dibutuhkan sistem database yang terpusat dan terstruktur untuk mengintegrasikan data tersebut, serta menyajikannya dalam bentuk yang mudah dipahami.
 
    Di era digital yang semakin didorong oleh data, pengelolaan informasi perguruan tinggi yang efisien dan terstruktur menjadi kunci penting dalam mendukung pengambilan keputusan yang akurat dan berbasis data. Data seperti lokasi wilayah, informasi universitas, program studi (prodi), dan jalur masuk merupakan aset berharga yang perlu disimpan, diolah, dan disajikan dengan baik. Sistem database yang terstruktur tidak hanya memudahkan penyimpanan data, tetapi juga memungkinkan analisis mendalam dan visualisasi interaktif yang dapat membantu berbagai pihak, mulai dari calon mahasiswa, peneliti, hingga pemangku kebijakan.
 
@@ -69,7 +69,8 @@ Many to Many (N:M) dengan JALUR MASUK dan "daya tampung" menjadi Relation Entity
 *catatan*: <br>
 1. Penambahan Atribut <br>
 Terdapat penambahan atribut pada entitas Universitas dan Jalur masuk. Pada Entitas `Universitas` ditambahkan atribut `longitude` dan `latitude` untuk tujuan visualisasi data di RShiny, sedangkan penambahan pada entitas `Jalur masuk` adalah atribut `id_jalur` karena pada entitas tersebut tidak terdapat Primary key atau kode yang unik, untuk menghindari adanya redudansi serta anomali maka dilakukan penambahan atribut yaitu `id_jalur` sebagai primay key dari `jalur masuk`.
-2. Temuan (Anomali) <br>
+
+3. Temuan (Anomali) <br>
 Pada data `jalur masuk`, ditemukan duplikasi data dimana terdapat dua tuple/baris yang sama persis tanpa perbedaan maka perlu dilakukan penghapusan pada salah satu tuple karena berdasarkan hasil analisis kelompok dicurigai tersapat kesalahan input data manual.
 
 ## **Struktur Database**
@@ -87,8 +88,8 @@ Menyimpan informasi tentang universitas.
 - `id_wilayah` (INT, Foreign Key ke Wilayah)
 - `nama_univ` (VARCHAR) – Nama universitas
 - `akred_univ` (CHAR) – Akreditasi universitas
+- - `latitude` (DECIMAL) - Latitude
 - `longitude` (DECIMAL) - Longitude 
-- `latitude` (DECIMAL) - Latitude
 
 ### **Tabel Prodi (Program Studi)**
 Menyimpan informasi tentang program studi di setiap universitas.
@@ -141,7 +142,7 @@ dbWriteTable(con, "Universitas", universitas, append = TRUE, row.names = FALSE)
 ```
 
 ## **Dashboard R Shiny**
-### Fitur Dashboard
+### Fitur Dashboard  <br>
 Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format **tabel interaktif** dan **grafik visualisasi**: <br>
 ✅ **Menampilkan tabel dari database**  <br>
 ✅ **Visualisasi akreditasi universitas dan prodi**  <br>
@@ -177,9 +178,9 @@ library(DT)
 4. **Entitas Jalur Masuk**  
    Entitas jalur masuk mencatat informasi seperti `id_jalur`, `id_univ`, `id_prodi`, `website`, `daya_tampung`, dan `jalur_masuk`. Atribut `id_jalur` ditambahkan sebagai kode unik untuk menghindari anomali dan redundansi data. Entitas ini membantu dalam memahami variasi jalur penerimaan mahasiswa dan kapasitas penerimaan di setiap program studi.  
 
-Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
+   Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
 
-Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
+   Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
 
 ## **Pengembangan Selanjutnya**
 Untuk pengembangan lebih lanjut, sistem ini dapat diperluas dengan fitur:
