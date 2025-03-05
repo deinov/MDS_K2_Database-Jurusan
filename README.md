@@ -86,7 +86,7 @@ dbWriteTable(con, "Universitas", universitas, append = TRUE, row.names = FALSE)
 
 Entity Relationship Diagram (ERD) yang menjelaskan hubungan antar entitas dalam sistem. Berikut interpretasinya:
 
-1. Entitas WILAYAH
+1. Entitas WILAYAH <br>
 Hubungan: One to Many (1:N) dengan UNIVERSITAS, artinya *satu wilayah memiliki banyak universitas*.
 
 2. Entitas UNIVERSITAS
@@ -139,7 +139,33 @@ library(DT)
 
 
 ## 5. Kesimpulan
-Proyek ini berhasil membangun **database K2JURUSAN** di MySQL, melakukan **impor data dari GitHub**, serta **menyajikan data dalam dashboard interaktif menggunakan R Shiny**. Sistem ini dapat digunakan untuk **analisis data perguruan tinggi, perbandingan daya tampung, serta distribusi akreditasi universitas dan program studi**.
+### **Kesimpulan**  
+Tugas ini bertujuan untuk membangun sebuah database yang menyimpan informasi lengkap tentang jurusan Statistika di Indonesia. Database ini dirancang untuk mencakup empat entitas utama: **Wilayah**, **Universitas**, **Program Studi**, dan **Jalur Masuk**. Masing-masing entitas memiliki atribut yang dirancang untuk memenuhi kebutuhan analisis data dan visualisasi yang komprehensif.  
+
+1. **Entitas Wilayah**  
+   Entitas ini berisi informasi tentang lokasi geografis, seperti `id_wilayah`, `nama_kabupaten_kota`, dan `nama_provinsi`. Data ini membantu dalam mengelompokkan universitas dan program studi berdasarkan daerah, memudahkan analisis distribusi geografis.  
+
+2. **Entitas Universitas**  
+   Entitas universitas menyimpan data seperti `id_univ`, `id_wilayah`, `nama_univ`, `akreditasi_univ`, serta atribut baru yaitu `longitude` dan `latitude`. Atribut geospasial ini memungkinkan visualisasi data universitas dalam bentuk peta interaktif pada dashboard, memberikan perspektif spasial yang lebih menarik.  
+
+3. **Entitas Program Studi**  
+   Entitas ini berfokus pada program studi Statistika, dengan atribut seperti `id_prodi`, `jenjang`, `id_univ`, `nama_prodi`, `jumlah_dosen`, `jumlah_mahasiswa`, dan `akreditasi_prodi`. Data ini memungkinkan analisis mendalam tentang kualitas dan kapasitas program studi di berbagai universitas.  
+
+4. **Entitas Jalur Masuk**  
+   Entitas jalur masuk mencatat informasi seperti `id_jalur`, `id_univ`, `id_prodi`, `website`, `daya_tampung`, dan `jalur_masuk`. Atribut `id_jalur` ditambahkan sebagai kode unik untuk menghindari anomali dan redundansi data. Entitas ini membantu dalam memahami variasi jalur penerimaan mahasiswa dan kapasitas penerimaan di setiap program studi.  
+
+Tim yang terdiri dari lima orang dengan peran khusus berhasil menyelesaikan proyek ini dengan baik:  
+- **DB Designer** merancang skema database yang efisien dan terstruktur.  
+- **DB Manager** memastikan database berfungsi optimal dan terkelola dengan baik.  
+- **Back-End Developer** mengintegrasikan database dengan aplikasi dan memastikan logika sistem berjalan lancar.  
+- **Front-End Developer** menciptakan antarmuka pengguna yang interaktif dan menarik, termasuk visualisasi data dalam bentuk peta dan grafik.  
+- **Technical Writer** menyusun dokumentasi yang jelas dan lengkap untuk memudahkan penggunaan dan pemeliharaan sistem.  
+
+Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
+
+Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
+
+Secara keseluruhan, tugas ini berhasil mencapai tujuannya dalam membangun sistem database yang komprehensif dan bermanfaat untuk analisis data pendidikan tinggi di Indonesia.
 
 ## 6. Pengembangan Selanjutnya
 Untuk pengembangan lebih lanjut, sistem ini dapat diperluas dengan fitur:
