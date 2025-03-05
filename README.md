@@ -1,8 +1,7 @@
 # MDS_K2_Database-Jurusan
 ![Image](https://github.com/user-attachments/assets/4586966d-c39b-49b7-b5f1-faca06320033)
 
-## Tim Penulis dan masing-masiing role
-
+## **Role**
 1. **Designer DB (Zamrah Mutmainah)**  
    Bertanggung jawab untuk menganalisis kebutuhan data, merancang skema database (termasuk tabel, relasi, dan indeks), serta memastikan integritas data dan keamanan sistem. Peran ini krusial dalam menciptakan fondasi database yang efisien dan terstruktur untuk mendukung kebutuhan aplikasi.
 
@@ -19,21 +18,36 @@
    Menyusun dokumentasi teknis, termasuk panduan penggunaan, visualisasi header, dan mengelola knowledge base untuk tim dan pengguna. Peran ini memastikan bahwa semua informasi tentang sistem terdokumentasi dengan baik dan mudah dipahami.
 
 
-## Pendahuluan
-Dalam era digital, pengelolaan data perguruan tinggi yang efisien sangat penting untuk mendukung pengambilan keputusan yang berbasis data. Data terkait wilayah, universitas, program studi (prodi), dan jalur masuk perlu disimpan dalam suatu sistem database yang terstruktur, mudah diakses, dan dapat divisualisasikan secara interaktif.
+## **Pendahuluan**  
 
-Teknologi yang digunakan :
-- Database:
-- MySQL (via dbngin) → Digunakan untuk menyimpan data secara terstruktur.
-- R (RMySQL dan DBI package) → Untuk koneksi ke database, pembuatan tabel, dan impor data.
+   Pendidikan tinggi di Indonesia memiliki keragaman yang tinggi, baik dari segi jumlah universitas, program studi, maupun jalur masuk yang ditawarkan. Namun, informasi ini seringkali tersebar di berbagai sumber dan tidak terintegrasi dengan baik. Hal ini menyulitkan calon mahasiswa, peneliti, atau pemangku kebijakan dalam mengakses dan menganalisis data secara efektif. Oleh karena itu, dibutuhkan sistem database yang terpusat dan terstruktur untuk mengintegrasikan data tersebut, serta menyajikannya dalam bentuk yang mudah dipahami.
 
-Pengolahan Data:
-- R (tidyverse, dplyr, readr, DBI) → Digunakan untuk pembersihan, manipulasi, dan transformasi data sebelum dimasukkan ke dalam database.
+   Di era digital yang semakin didorong oleh data, pengelolaan informasi perguruan tinggi yang efisien dan terstruktur menjadi kunci penting dalam mendukung pengambilan keputusan yang akurat dan berbasis data. Data seperti lokasi wilayah, informasi universitas, program studi (prodi), dan jalur masuk merupakan aset berharga yang perlu disimpan, diolah, dan disajikan dengan baik. Sistem database yang terstruktur tidak hanya memudahkan penyimpanan data, tetapi juga memungkinkan analisis mendalam dan visualisasi interaktif yang dapat membantu berbagai pihak, mulai dari calon mahasiswa, peneliti, hingga pemangku kebijakan.
 
-Visualisasi & Dashboard:
-- R Shiny → Untuk membangun antarmuka pengguna interaktif yang memungkinkan eksplorasi data perguruan tinggi dalam bentuk grafik, tabel, dan filter dinamis.
+   Proyek ini bertujuan untuk membangun sistem database yang komprehensif dan interaktif, khususnya untuk jurusan Statistika di Indonesia. Dengan menyediakan informasi tentang universitas, program studi, akreditasi, daya tampung, dan jalur masuk, sistem ini dirancang untuk menjadi alat bantu yang efektif dalam menganalisis dan membandingkan data perguruan tinggi. Selain itu, sistem ini juga dilengkapi dengan dashboard interaktif yang memungkinkan pengguna untuk mengeksplorasi data secara visual dan dinamis.
 
-## Diagram ER
+### **Tujuan Proyek**  
+Proyek ini memiliki beberapa tujuan utama:  
+1. **Membangun Database Terstruktur**: Menyimpan data tentang wilayah, universitas, program studi, dan jalur masuk dalam sistem database yang terstruktur dan efisien.  
+2. **Menyediakan Akses Data yang Mudah**: Memungkinkan pengguna untuk mengakses dan menganalisis data dengan cepat melalui antarmuka yang user-friendly.  
+3. **Visualisasi Data Interaktif**: Menyajikan data dalam bentuk dashboard interaktif yang dilengkapi dengan grafik, tabel, dan filter dinamis.  
+
+### **Teknologi yang Digunakan**  
+Untuk mencapai tujuan tersebut, proyek ini memanfaatkan beberapa teknologi dan tools yang saling melengkapi:  
+
+1. **Database**:  
+   - **MySQL (via dbngin)**: Digunakan sebagai sistem manajemen database relasional untuk menyimpan data secara terstruktur dan efisien. MySQL dipilih karena kemampuannya dalam menangani data besar dan kompatibilitasnya dengan berbagai tools analisis.  
+   - **R (RMySQL dan DBI package)**: Digunakan untuk menghubungkan R dengan MySQL, membuat tabel, dan melakukan impor data ke dalam database. Paket ini memastikan integrasi yang mulus antara R dan MySQL.  
+
+2. **Pengolahan Data**:  
+   - **R (tidyverse, dplyr, readr, DBI)**: Digunakan untuk pembersihan data, manipulasi, dan transformasi data sebelum dimasukkan ke dalam database. Paket-paket ini memastikan data yang diolah konsisten, akurat, dan siap digunakan untuk analisis lebih lanjut.  
+
+3. **Visualisasi & Dashboard**:  
+   - **R Shiny**: Digunakan untuk membangun antarmuka pengguna interaktif yang memungkinkan eksplorasi data perguruan tinggi melalui grafik, tabel, dan filter dinamis. Dashboard ini dirancang untuk memberikan pengalaman pengguna yang intuitif dan informatif, sehingga pengguna dapat dengan mudah mengekstrak insight dari data.  
+
+Dengan menggabungkan kekuatan database, pengolahan data, dan visualisasi interaktif, proyek ini bertujuan untuk menciptakan sistem yang tidak hanya menyimpan data dengan baik, tetapi juga menyajikannya dalam bentuk yang mudah dipahami dan dapat diakses oleh berbagai pihak.
+
+## **Diagram ER**
 ![ERD Novel](https://github.com/deinov/MDS_K2_Database-Jurusan/blob/Designer-DB/ERD.jpg)
 
 Entity Relationship Diagram (ERD) yang menjelaskan hubungan antar entitas dalam sistem. Berikut interpretasinya:
@@ -52,7 +66,7 @@ Hubungan: <br>
 One to Many (1:N) dengan UNIVERSITAS, artinya *banyak program studi berada di satu universitas*.
 Many to Many (N:M) dengan JALUR MASUK dan "daya tampung" menjadi Relation Entity, artinya *banyak program studi bisa memiliki banyak jalur masuk*. <br>
 
-## Struktur Database
+## **Struktur Database**
 Database ini dinamakan **K2JURUSAN** dan terdiri dari empat tabel utama:
 
 ### **Tabel Wilayah**
@@ -87,8 +101,8 @@ Menyimpan informasi tentang jalur masuk ke universitas dan program studi.
 - `daya_tampung` (INT) – Kapasitas daya tampung
 - `website` (VARCHAR) – Website informasi jalur masuk
 
-## Implementasi dalam R
-### **Koneksi ke Database MySQL**
+## **Implementasi dalam R**
+### Koneksi ke Database MySQL
 Database dibuat dan dikelola menggunakan **R**, dengan koneksi ke MySQL melalui paket `DBI` dan `RMySQL`. Berikut adalah kode koneksi ke database:
 ```r
 con <- dbConnect(MySQL(),
@@ -99,7 +113,7 @@ con <- dbConnect(MySQL(),
                  password = "")
 ```
 
-### **Pembuatan Tabel di R**
+### Pembuatan Tabel di R
 Setiap tabel dibuat menggunakan perintah `dbExecute()`, misalnya:
 ```r
 # Membuat tabel Wilayah
@@ -110,7 +124,7 @@ dbExecute(con, "CREATE TABLE IF NOT EXISTS Wilayah (
 );")
 ```
 
-### **Impor Data dari GitHub**
+### Impor Data dari GitHub
 Data diambil langsung dari GitHub menggunakan `read.csv()` dan dimasukkan ke dalam tabel menggunakan `dbWriteTable()` atau `INSERT INTO`.
 ```r
 url_universitas <- "https://raw.githubusercontent.com/deinov/MDS_K2_Database-Jurusan/main/data/UNIVERSITAS.csv"
@@ -118,17 +132,17 @@ universitas <- read.csv(url_universitas)
 dbWriteTable(con, "Universitas", universitas, append = TRUE, row.names = FALSE)
 ```
 
-## Dashboard R Shiny
-### **Fitur Dashboard**
+## **Dashboard R Shiny**
+### Fitur Dashboard
 Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format **tabel interaktif** dan **grafik visualisasi**:
 ✅ **Menampilkan tabel dari database**
 ✅ **Visualisasi akreditasi universitas dan prodi**
 ✅ **Filter dan pencarian data**
 
-### **Tampilan Dashboard**
+### Tampilan Dashboard
 Tampilan dashboard dibuat lebih elegan dengan tema `flatly`, serta warna yang berbeda untuk setiap kategori akreditasi.
 
-### **Kode Dashboard R Shiny**
+### Kode Dashboard R Shiny
 Dashboard dibuat menggunakan layout **sidebar + tabset panel**, dengan koneksi langsung ke MySQL.
 ```r
 library(shiny)
@@ -139,9 +153,9 @@ library(DT)
 ```
 (Catatan: Kode lengkap dashboard dapat dilihat di file `shiny_dashboard.R`)
 
-## Kesimpulan
-### **Kesimpulan**  
-Tugas ini bertujuan untuk membangun sebuah database yang menyimpan informasi lengkap tentang jurusan Statistika di Indonesia. Database ini dirancang untuk mencakup empat entitas utama: **Wilayah**, **Universitas**, **Program Studi**, dan **Jalur Masuk**. Masing-masing entitas memiliki atribut yang dirancang untuk memenuhi kebutuhan analisis data dan visualisasi yang komprehensif.  
+## **Kesimpulan**
+
+   Tugas ini bertujuan untuk membangun sebuah database yang menyimpan informasi lengkap tentang jurusan Statistika di Indonesia. Database ini dirancang untuk mencakup empat entitas utama: **Wilayah**, **Universitas**, **Program Studi**, dan **Jalur Masuk**. Masing-masing entitas memiliki atribut yang dirancang untuk memenuhi kebutuhan analisis data dan visualisasi yang komprehensif.  
 
 1. **Entitas Wilayah**  
    Entitas ini berisi informasi tentang lokasi geografis, seperti `id_wilayah`, `nama_kabupaten_kota`, dan `nama_provinsi`. Data ini membantu dalam mengelompokkan universitas dan program studi berdasarkan daerah, memudahkan analisis distribusi geografis.  
@@ -155,13 +169,11 @@ Tugas ini bertujuan untuk membangun sebuah database yang menyimpan informasi len
 4. **Entitas Jalur Masuk**  
    Entitas jalur masuk mencatat informasi seperti `id_jalur`, `id_univ`, `id_prodi`, `website`, `daya_tampung`, dan `jalur_masuk`. Atribut `id_jalur` ditambahkan sebagai kode unik untuk menghindari anomali dan redundansi data. Entitas ini membantu dalam memahami variasi jalur penerimaan mahasiswa dan kapasitas penerimaan di setiap program studi.  
 
-Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
+   Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
 
-Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
+   Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
 
-Secara keseluruhan, tugas ini berhasil mencapai tujuannya dalam membangun sistem database yang komprehensif dan bermanfaat untuk analisis data pendidikan tinggi di Indonesia.
-
-## Pengembangan Selanjutnya
+## **Pengembangan Selanjutnya**
 Untuk pengembangan lebih lanjut, sistem ini dapat diperluas dengan fitur:
 - **Analisis lebih dalam** tentang hubungan antara jumlah mahasiswa, akreditasi, dan daya tampung.
 - **Penambahan fitur pencarian dan filter lanjutan** di dashboard.
