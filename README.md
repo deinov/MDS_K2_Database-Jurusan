@@ -121,25 +121,21 @@ library(DT)
 (Catatan: Kode lengkap dashboard dapat dilihat di file `shiny_dashboard.R`)
 
 ## Tim Penulis dan masing-masiing role
-**Designer DB : Zamrah Mutmainah**
-- ** Menganalisis kebutuhan data, merancang skema database (seperti tabel, relasi, dan indeks), serta memastikan integritas data dan keamanan sistem.
 
-**Back-End : Jefita Resti Sari**
-- **
+1. **Designer DB (Zamrah Mutmainah)**  
+   Bertanggung jawab untuk menganalisis kebutuhan data, merancang skema database (termasuk tabel, relasi, dan indeks), serta memastikan integritas data dan keamanan sistem. Peran ini krusial dalam menciptakan fondasi database yang efisien dan terstruktur untuk mendukung kebutuhan aplikasi.
 
-**DB Manager : I Putu Gde Inove Bagus Prasetya**
-- **
+2. **Back-End Developer (Jefita Resti Sari)**  
+   Mengelola logika server, integrasi database, dan API. Memastikan bahwa data dapat diakses dan diproses dengan baik oleh front-end. Peran ini juga bertanggung jawab atas keamanan dan performa sistem secara keseluruhan.
 
-**Front-End Developer : Claudian Tikulimbong Tangdilomban**
-- ** Desain UI (User Interface)
-- ** Interaktivitas dengan Pengguna
-- ** Visualisasi Data
-- ** Optimasi UI/UX
-- ** Testing dan Debugging
+3. **DB Manager (I Putu Gde Inove Bagus Prasetya)**  
+   Bertugas mengelola dan memelihara database, termasuk optimasi query, backup data, dan memastikan ketersediaan data. Peran ini memastikan database berjalan lancar dan siap digunakan oleh tim pengembang.
 
-Technical Writer : Carlya Agmis Aimandiga
-- ** Menyusun dokumentasi dan visualisasi header
--  ** Mengelola knowledge base untuk tim dan pengguna
+4. **Front-End Developer (Claudian Tikulimbong Tangdilomban)**  
+   Fokus pada desain UI (User Interface), interaktivitas dengan pengguna, visualisasi data, dan optimasi UI/UX. Juga bertanggung jawab untuk testing dan debugging antarmuka agar pengguna dapat berinteraksi dengan sistem secara intuitif dan menyenangkan.
+
+5. **Technical Writer (Carlya Agmis Aimandiga)**  
+   Menyusun dokumentasi teknis, termasuk panduan penggunaan, visualisasi header, dan mengelola knowledge base untuk tim dan pengguna. Peran ini memastikan bahwa semua informasi tentang sistem terdokumentasi dengan baik dan mudah dipahami.
 
 
 ## 5. Kesimpulan
