@@ -89,7 +89,6 @@ Entity Relationship Diagram (ERD) yang menjelaskan hubungan antar entitas dalam 
 1. Entitas WILAYAH
 Hubungan: One to Many (1:N) dengan UNIVERSITAS, artinya *satu wilayah memiliki banyak universitas*.
 
-
 2. Entitas UNIVERSITAS
 Hubungan:
 One to Many (1:N) dengan PRODI, artinya *satu universitas memiliki banyak program studi*.
@@ -121,24 +120,22 @@ library(DT)
 ```
 (Catatan: Kode lengkap dashboard dapat dilihat di file `shiny_dashboard.R`)
 
-## Tim Penulis
+## Tim Penulis dan masing-masiing role
+**Designer DB : Zamrah Mutmainah**
+- ** Menganalisis kebutuhan data, merancang skema database (seperti tabel, relasi, dan indeks), serta memastikan integritas data dan keamanan sistem.
 
-Front-End Developer : Claudian Tikulimbong Tangdilomban
+**Back-End : Jefita Resti Sari**
+- **
+
+**DB Manager : I Putu Gde Inove Bagus Prasetya**
+- **
+
+**Front-End Developer : Claudian Tikulimbong Tangdilomban**
 - ** Desain UI (User Interface)
 - ** Interaktivitas dengan Pengguna
 - ** Visualisasi Data
 - ** Optimasi UI/UX
 - ** Testing dan Debugging
-
-
-Back-End : Jefita Resti Sari
-- ** 
-
-Designer DB : Zamrah Mutmainah
-- ** Menganalisis kebutuhan data, merancang skema database (seperti tabel, relasi, dan indeks), serta memastikan integritas data dan keamanan sistem.
-
-DB Manager : I Putu Gde Inove Bagus Prasetya
-- ** 
 
 Technical Writer : Carlya Agmis Aimandiga
 - ** Menyusun dokumentasi dan visualisasi header
