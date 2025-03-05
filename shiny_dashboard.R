@@ -9,7 +9,7 @@ library(plotly)  # Tambahkan paket plotly
 library(leaflet)
 
 # Koneksi ke MySQL
-con <- dbConnect(MySQL(), dbname = "K2JURUSAN", host = "127.0.0.1", 
+con <- dbConnect(MySQL(), dbname = "Jeje", host = "127.0.0.1", 
                  port = 3307, user = "root", password = "")
 
 # UI Dashboard
@@ -43,6 +43,18 @@ ui <- dashboardPage(
               )
       ),
       
+      # Tab Universitas
+      tabItem(tabName = "universitas",
+              fluidRow(
+                box(title = "Tabel Universitas", DTOutput("tabel_universitas"), width = 12)
+              ),
+              fluidRow(
+                box(title = "Distribusi Akreditasi Universitas", width = 6, 
+                    plotlyOutput("bar_akreditasi_univ")),
+                box(title = "Persentase Akreditasi Universitas", width = 6, 
+                    plotlyOutput("pie_akreditasi_univ"))
+              )
+      ),
       # Tab Wilayah
       tabItem(tabName = "wilayah",
               fluidRow(
@@ -50,9 +62,13 @@ ui <- dashboardPage(
                     DTOutput("tabel_wilayah")),
                 box(title = "Grafik Kabupaten/Kota per Provinsi", width = 6, 
                     plotlyOutput("grafik_wilayah"))
+              ),
+              fluidRow(
+                box(title = "Peta Sebaran Universitas", width = 12, 
+                    leafletOutput("peta_universitas", height = 500))
               )
-              
       ),
+      
       
       # Tab Jalur Masuk
       tabItem(tabName = "jalur_masuk",
@@ -174,6 +190,28 @@ server <- function(input, output, session) {
              xaxis = list(title = "Provinsi"),
              yaxis = list(title = "Jumlah Kabupaten/Kota"))
   })
+  # Ambil Data Universitas untuk Peta
+  universitas_data <- reactive({
+    dbGetQuery(con, "SELECT nama_univ, latitude, longitude FROM Universitas")
+  })
+  
+  # Peta Sebaran Universitas
+  output$peta_universitas <- renderLeaflet({
+    data <- universitas_data()
+    
+    leaflet(data) %>%
+      addTiles() %>%
+      addCircleMarkers(
+        lng = ~longitude, lat = ~latitude,
+        popup = ~nama_univ,
+        radius = 5,
+        color = "blue",
+        fillOpacity = 0.7
+      ) %>%
+      setView(lng = mean(data$longitude, na.rm = TRUE), 
+              lat = mean(data$latitude, na.rm = TRUE), 
+              zoom = 5)
+  })
   
   # Pie Chart Persentase Kabupaten/Kota per Provinsi
   output$pie_wilayah <- renderPlotly({
@@ -193,7 +231,37 @@ server <- function(input, output, session) {
     wordcloud(words = data$Nama_Kabkota, scale = c(3, 0.5), max.words = 50, colors = rainbow(7))
   })
   
+  # Ambil Data Universitas dari Database
+  universitas_data <- reactive({
+    dbGetQuery(con, "SELECT * FROM Universitas")
+  })
   
+  # Tampilkan Tabel Universitas
+  output$tabel_universitas <- renderDT({
+    datatable(universitas_data(), options = list(pageLength = 5))
+  })
+  
+  # Grafik Distribusi Akreditasi Universitas (Bar Chart)
+  output$bar_akreditasi_univ <- renderPlotly({
+    df <- dbGetQuery(con, "SELECT akred_univ FROM Universitas")
+    df_count <- as.data.frame(table(df$akred_univ))
+    
+    plot_ly(df_count, x = ~Var1, y = ~Freq, type = "bar", color = ~Var1) %>%
+      layout(
+        title = "Distribusi Akreditasi Universitas",
+        xaxis = list(title = "Akreditasi"),
+        yaxis = list(title = "Jumlah")
+      )
+  })
+  
+  # Pie Chart Persentase Akreditasi Universitas
+  output$pie_akreditasi_univ <- renderPlotly({
+    df <- dbGetQuery(con, "SELECT akred_univ FROM Universitas")
+    df_count <- as.data.frame(table(df$akred_univ))
+    
+    plot_ly(df_count, labels = ~Var1, values = ~Freq, type = "pie", textinfo = "label+percent") %>%
+      layout(title = "Persentase Akreditasi Universitas")
+  })
   # Ambil Data Jalur Masuk dari Database
   jalur_data <- reactive({
     dbGetQuery(con, "SELECT id_prodi, id_univ, jalur_masuk, daya_tampung, website FROM jalur_masuk")
