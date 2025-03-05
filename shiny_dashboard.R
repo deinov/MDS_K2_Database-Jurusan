@@ -9,8 +9,8 @@ library(plotly)  # Tambahkan paket plotly
 library(leaflet)
 
 # Koneksi ke MySQL
-con <- dbConnect(MySQL(), dbname = "K2JURUSAN", host = "127.0.0.1", 
-                 port = 3306, user = "root", password = "")
+con <- dbConnect(MySQL(), dbname = "Jeje", host = "127.0.0.1", 
+                 port = 3307, user = "root", password = "")
 
 # UI Dashboard
 ui <- dashboardPage(
