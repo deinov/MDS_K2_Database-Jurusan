@@ -164,7 +164,7 @@ library(DT)
 
 ## **Kesimpulan**
 
-   Tugas ini bertujuan untuk membangun sebuah database yang menyimpan informasi lengkap tentang jurusan Statistika di Indonesia. Database ini dirancang untuk mencakup empat entitas utama: **Wilayah**, **Universitas**, **Program Studi**, dan **Jalur Masuk**. Masing-masing entitas memiliki atribut yang dirancang untuk memenuhi kebutuhan analisis data dan visualisasi yang komprehensif.  
+Tugas ini bertujuan untuk membangun sebuah database yang menyimpan informasi lengkap tentang jurusan Statistika di Indonesia. Database ini dirancang untuk mencakup empat entitas utama: **Wilayah**, **Universitas**, **Program Studi**, dan **Jalur Masuk**. Masing-masing entitas memiliki atribut yang dirancang untuk memenuhi kebutuhan analisis data dan visualisasi yang komprehensif.  
 
 1. **Entitas Wilayah**  
    Entitas ini berisi informasi tentang lokasi geografis, seperti `id_wilayah`, `nama_kabupaten_kota`, dan `nama_provinsi`. Data ini membantu dalam mengelompokkan universitas dan program studi berdasarkan daerah, memudahkan analisis distribusi geografis.  
@@ -178,9 +178,9 @@ library(DT)
 4. **Entitas Jalur Masuk**  
    Entitas jalur masuk mencatat informasi seperti `id_jalur`, `id_univ`, `id_prodi`, `website`, `daya_tampung`, dan `jalur_masuk`. Atribut `id_jalur` ditambahkan sebagai kode unik untuk menghindari anomali dan redundansi data. Entitas ini membantu dalam memahami variasi jalur penerimaan mahasiswa dan kapasitas penerimaan di setiap program studi.  
 
-   Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
+Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
 
-   Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
+Dengan adanya fitur visualisasi data seperti peta interaktif dan dashboard yang user-friendly, sistem ini memberikan pengalaman pengguna yang lebih baik dan memudahkan eksplorasi data. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti integrasi dengan API eksternal, penambahan fitur analisis prediktif, dan perluasan cakupan data untuk memberikan insight yang lebih mendalam.  
 
 ## **Pengembangan Selanjutnya**
 Untuk pengembangan lebih lanjut, sistem ini dapat diperluas dengan fitur:
