@@ -51,11 +51,11 @@ dbExecute(con, "CREATE TABLE IF NOT EXISTS Wilayah (
 # Tabel Universitas
 dbExecute(con, "CREATE TABLE IF NOT EXISTS Universitas (
     id_univ INT PRIMARY KEY AUTO_INCREMENT,
-    id_wilayah INT,
+    id_wilayah DECIMAL(9,6),
     nama_univ VARCHAR(255) NOT NULL,
     akred_univ CHAR(1),
-    latitude INT,
-    longitude INT,
+    latitude DECIMAL(9,6),
+    longitude DECIMAL(9,6),
     FOREIGN KEY (id_wilayah) REFERENCES Wilayah(id_wilayah) ON DELETE SET NULL
 );")
 
@@ -187,9 +187,9 @@ library(dplyr)
 
 # Koneksi ke database K2JURUSAN
 con <- dbConnect(MySQL(), 
-                 dbname = "K2JURUSAN", 
+                 dbname = "Jeje", 
                  host = "127.0.0.1", 
-                 port = 3306, 
+                 port = 3307, 
                  user = "root", 
                  password = "")
 
@@ -251,7 +251,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   con <- dbConnect(MySQL(), dbname = "K2JURUSAN", host = "127.0.0.1", 
-                   port = 3306, user = "root", password = "")
+                   port = 3307, user = "root", password = "")
   
   data_reactive <- eventReactive(input$loadData, {
     query <- sprintf("SELECT * FROM %s;", input$tabel)

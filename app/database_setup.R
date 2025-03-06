@@ -6,7 +6,7 @@ library(RMySQL)
 # Koneksi ke MySQL (tanpa memilih database terlebih dahulu)
 con <- dbConnect(MySQL(), 
                  host = "127.0.0.1", 
-                 port = 3306, 
+                 port = 3307, 
                  user = "root", 
                  password = "")  # Sesuaikan jika ada password
 
@@ -18,9 +18,9 @@ dbDisconnect(con)
 
 # Koneksi ulang ke database K2JURUSAN
 con <- dbConnect(MySQL(), 
-                 dbname = "K2JURUSAN", 
+                 dbname = "Jeje", 
                  host = "127.0.0.1", 
-                 port = 3306, 
+                 port = 3307, 
                  user = "root", 
                  password = "")
 
@@ -36,11 +36,11 @@ dbExecute(con, "CREATE TABLE IF NOT EXISTS Wilayah (
 # Tabel Universitas
 dbExecute(con, "CREATE TABLE IF NOT EXISTS Universitas (
     id_univ INT PRIMARY KEY AUTO_INCREMENT,
-    id_wilayah INT,
+    id_wilayah DECIMAL(9,6),
     nama_univ VARCHAR(255) NOT NULL,
     akred_univ CHAR(1),
-    latitude INT,
-    longitute INT,
+    latitude DECIMAL(9,6),
+    longitude DECIMAL(9,6),
     FOREIGN KEY (id_wilayah) REFERENCES Wilayah(id_wilayah) ON DELETE SET NULL
 );")
 
