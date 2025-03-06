@@ -48,7 +48,7 @@ Untuk mencapai tujuan tersebut, proyek ini memanfaatkan beberapa teknologi dan t
 Dengan menggabungkan kekuatan database, pengolahan data, dan visualisasi interaktif, proyek ini bertujuan untuk menciptakan sistem yang tidak hanya menyimpan data dengan baik, tetapi juga menyajikannya dalam bentuk yang mudah dipahami dan dapat diakses oleh berbagai pihak.
 
 ## **Entity Relationship Diagram (ERD)**
-![ERD Novel](https://github.com/deinov/MDS_K2_Database-Jurusan/blob/Designer-DB/ERD.jpg)
+![ERD Novel](https://github.com/deinov/MDS_K2_Database-Jurusan/blob/main/Image/ERD%20Baru.jpg)
 
 Entity Relationship Diagram (ERD) yang menjelaskan hubungan antar entitas dalam sistem. Berikut interpretasinya:
 
