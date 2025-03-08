@@ -6,7 +6,7 @@ library(RMySQL)
 # Koneksi ke MySQL (tanpa memilih database terlebih dahulu)
 con <- dbConnect(MySQL(), 
                  host = "127.0.0.1", 
-                 port = 3307, 
+                 port = 3306, 
                  user = "root", 
                  password = "")  # Sesuaikan jika ada password
 
@@ -18,9 +18,9 @@ dbDisconnect(con)
 
 # Koneksi ulang ke database K2JURUSAN
 con <- dbConnect(MySQL(), 
-                 dbname = "Jeje", 
+                 dbname = "K2JURUSAN", 
                  host = "127.0.0.1", 
-                 port = 3307, 
+                 port = 3306, 
                  user = "root", 
                  password = "")
 
