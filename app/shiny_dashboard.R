@@ -135,9 +135,6 @@ ui <- dashboardPage(
                                 height = "300px", 
                                 style = "border-radius: 20px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);"),
                        
-                       # Deskripsi Tim (Opsional)
-                       p("Kami adalah tim yang berdedikasi dalam pengembangan data dan teknologi.", 
-                         style = "font-size: 18px; margin-top: 15px;")
                 )
               )
       )
