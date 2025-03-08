@@ -124,24 +124,28 @@ ui <- dashboardPage(
                     plotlyOutput("pie_akreditasi"))
               )
       ),
-      #Tab Our Team
+      # Our Team
       tabItem(tabName = "our_team",
               fluidRow(
+                style = "margin-top: 50px;",  # Tambahkan style di fluidRow
                 column(12, align = "center",
-                       h2("Our Team"),  
-                       tags$hr(),  
-                       
-                       # Gambar dari folder www/ di GitHub
-                       tags$img(src = "team.png", 
-                                height = "300px", 
-                                style = "border-radius: 20px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);"),
-                       tags$p("Kami adalah tim yang berdedikasi dalam pengembangan data dan teknologi.", 
-                        style = "font-size: 16px; margin-top: 10px;")
+                       div(  # Bungkus dalam div agar style bisa diterapkan
+                         tags$img(src = "team.png", 
+                                  height = "300px", 
+                                  style = "border-radius: 20px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);"),
+                         tags$p(
+                           "From our team, who created this with all our hearts, we wish for your future and ours to shine as brightly as the sun—endless and full of hope.",
+                           style = "font-size: 16px; font-style: italic; margin-top: 20px;"
+                         ),
+                         tags$p(
+                           "With love, Kelompok 2 Manajemen Data Statistika",
+                           style = "font-weight: bold; font-size: 18px; color: #2c3e50; margin-top: -5px;"
+                         )
+                       )
                 )
               )
       )
       
-
     )
   )
 )
