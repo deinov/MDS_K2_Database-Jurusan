@@ -135,7 +135,8 @@ ui <- dashboardPage(
                        tags$img(src = "team.png", 
                                 height = "300px", 
                                 style = "border-radius: 20px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);"),
-                       
+                       tags$p("Kami adalah tim yang berdedikasi dalam pengembangan data dan teknologi.", 
+                        style = "font-size: 16px; margin-top: 10px;")
                 )
               )
       )
