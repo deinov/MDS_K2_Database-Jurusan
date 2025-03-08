@@ -5,6 +5,7 @@ library(DBI)
 library(RMySQL)
 library(DT)
 library(ggplot2)
+library(tidyr)
 library(plotly)  # Tambahkan paket plotly
 library(leaflet)
 
@@ -33,9 +34,8 @@ ui <- dashboardPage(
       tabItem(tabName = "beranda",
               fluidRow(
                 column(12, align = "center",
-                       tags$img(src = "beranda.png", 
-         height = "200px")
-
+                       tags$img(src = "https://drive.google.com/uc?export=view&id=1Jpf85_zc0PtuczdkRBPX4vmM6SGhhDMr", 
+                                height = "200px")
                 )
               ),
               fluidRow(
@@ -397,15 +397,29 @@ server <- function(input, output, session) {
              yaxis = list(title = "Jumlah Dosen"))
   })
   
-  # Pie Chart Persentase Akreditasi Program Studi
+  # Ambil Data
+  akredprodi_data <- reactive({
+    dbGetQuery(con, "SELECT id_prodi, id_univ, nama_prodi, jumlah_dosen, jumlah_mahasiswa, akred_prodi, jenjang FROM Prodi")
+  })
+  
+  # Pie Chart Persentase Akreditasi Program Studi (Fixed)
   output$pie_akreditasi <- renderPlotly({
-    data <- data_filtered_prodi() %>%
+    data <- prodi_data() %>%
+      filter(!is.na(akred_prodi)) %>%
       group_by(akred_prodi) %>%
-      summarise(jumlah_prodi = n())
+      summarise(jumlah_prodi = n()) %>%
+      as.data.frame()  # Pastikan formatnya data frame
+    
+    print(head(data))  # Debugging: tampilkan data
     
     plot_ly(data, labels = ~akred_prodi, values = ~jumlah_prodi, type = "pie", textinfo = "label+percent") %>%
       layout(title = "Persentase Akreditasi Program Studi")
   })
+  
+  
+  
+  
+  
   
   
   # Disconnect dari database saat aplikasi ditutup
