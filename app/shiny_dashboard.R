@@ -34,7 +34,7 @@ ui <- dashboardPage(
       tabItem(tabName = "beranda",
               fluidRow(
                 column(12, align = "center",
-                       tags$img(src = "https://drive.google.com/uc?export=view&id=1E-MSQ1R4a9zF0iXnG_3LI9t9A_uFTLdX", 
+                       tags$img(src = "https://drive.google.com/uc?export=view&id=1l0H0FL_gzU2pPHzN_UqqRGopYhMZGRPk", 
                                 height = "200px")
                 )
               ),
@@ -130,7 +130,7 @@ ui <- dashboardPage(
                 style = "margin-top: 50px;",  # Tambahkan style di fluidRow
                 column(12, align = "center",
                        div(  # Bungkus dalam div agar style bisa diterapkan
-                         tags$img(src = "team.png", 
+                         tags$img(src = "https://drive.google.com/uc?export=view&id=10ldK5_EQNVPHKyvCms_JJqTaeBnEyTqF", 
                                   height = "300px", 
                                   style = "border-radius: 20px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);"),
                          tags$p(
@@ -420,12 +420,6 @@ server <- function(input, output, session) {
     plot_ly(data, labels = ~akred_prodi, values = ~jumlah_prodi, type = "pie", textinfo = "label+percent") %>%
       layout(title = "Persentase Akreditasi Program Studi")
   })
-  
-  
-  
-  
-  
-  
   
   # Disconnect dari database saat aplikasi ditutup
   onStop(function() {
