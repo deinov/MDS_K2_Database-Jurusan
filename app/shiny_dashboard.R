@@ -34,7 +34,7 @@ ui <- dashboardPage(
       tabItem(tabName = "beranda",
               fluidRow(
                 column(12, align = "center",
-                       tags$img(src = "https://drive.google.com/uc?export=view&id=1Jpf85_zc0PtuczdkRBPX4vmM6SGhhDMr", 
+                       tags$img(src = "https://drive.google.com/uc?export=view&id=1E-MSQ1R4a9zF0iXnG_3LI9t9A_uFTLdX", 
                                 height = "200px")
                 )
               ),
