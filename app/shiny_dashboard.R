@@ -130,8 +130,8 @@ ui <- dashboardPage(
                        h2("Our Team"),  
                        tags$hr(),  
                        
-                       # Gambar dari Google Drive
-                       tags$img(src = "https://drive.google.com/uc?export=view&id=10ldK5_EQNVPHKyvCms_JJqTaeBnEyTqF", 
+                       # Gambar dari folder www/ di GitHub
+                       tags$img(src = "team.png", 
                                 height = "300px", 
                                 style = "border-radius: 20px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);"),
                        
