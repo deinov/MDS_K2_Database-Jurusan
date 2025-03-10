@@ -138,6 +138,10 @@ ui <- dashboardPage(
                            style = "font-size: 16px; font-style: italic; margin-top: 20px;"
                          ),
                          tags$p(
+                           "Enjoy your Experience with us",
+                           style = "font-size: 16px; font-style: italic; margin-top: 20px;"
+                         ),
+                         tags$p(
                            "With love, Kelompok 2 Manajemen Data Statistika",
                            style = "font-weight: bold; font-size: 18px; color: #2c3e50; margin-top: -5px;"
                          )
