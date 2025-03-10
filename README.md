@@ -149,6 +149,13 @@ Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format *
 ✅ **Filter dan pencarian data**  <br>
 
 ### Tampilan Dashboard
+![Image](https://github.com/user-attachments/assets/fcc54727-9c2c-46e6-9df7-e0346dca8514)
+**Menu
+✅ **Wilayah
+✅ **Universitas
+✅ **Program Studi
+✅ **Jalur Masuk
+✅ **Our Team
 Tampilan dashboard dibuat lebih elegan dengan tema `flatly`, serta warna yang berbeda untuk setiap kategori akreditasi.
 
 ### Kode Dashboard R Shiny
