@@ -6,7 +6,7 @@ library(RMySQL)
 library(DT)
 library(ggplot2)
 library(tidyr)
-library(plotly)  # Tambahkan paket plotly
+library(plotly) 
 library(leaflet)
 
 # Koneksi ke MySQL
@@ -127,9 +127,9 @@ ui <- dashboardPage(
       # Our Team
       tabItem(tabName = "our_team",
               fluidRow(
-                style = "margin-top: 50px;",  # Tambahkan style di fluidRow
+                style = "margin-top: 50px;",  
                 column(12, align = "center",
-                       div(  # Bungkus dalam div agar style bisa diterapkan
+                       div(  
                          tags$img(src = "https://drive.google.com/uc?export=view&id=10ldK5_EQNVPHKyvCms_JJqTaeBnEyTqF", 
                                   height = "300px", 
                                   style = "border-radius: 20px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);"),
