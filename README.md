@@ -143,10 +143,11 @@ dbWriteTable(con, "Universitas", universitas, append = TRUE, row.names = FALSE)
 
 ## **Dashboard R Shiny**
 ### Fitur Dashboard  <br>
-Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format **tabel interaktif** dan **grafik visualisasi**: <br>
-✅ **Menampilkan tabel dari database**  <br>
-✅ **Visualisasi akreditasi universitas dan prodi**  <br>
-✅ **Filter dan pencarian data**  <br>
+Dashboard dibangun menggunakan **R Shiny** untuk menampilkan data dalam format **tabel interaktif** dan **grafik visualisasi**: 
+
+✅ **Menampilkan tabel dari database**  
+✅ **Visualisasi akreditasi universitas dan prodi**  
+✅ **Filter dan pencarian data** 
 
 ### Tampilan Dashboard
 ![Image](https://github.com/user-attachments/assets/fcc54727-9c2c-46e6-9df7-e0346dca8514)
