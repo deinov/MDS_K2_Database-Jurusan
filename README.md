@@ -209,3 +209,6 @@ Untuk pengembangan lebih lanjut, sistem ini dapat diperluas dengan fitur:
 Analisis lebih dalam tentang hubungan antara jumlah mahasiswa, akreditasi, dan daya tampung.
 Penambahan fitur pencarian dan filter lanjutan di dashboard.
 Integrasi dengan API eksternal untuk mendapatkan data terbaru secara otomatis.
+
+Team
+![Image](https://github.com/user-attachments/assets/dec3d289-5f08-4170-9090-51943bbdc936)
