@@ -181,16 +181,20 @@ library(DT)
 
 Tugas ini bertujuan untuk membangun sebuah database yang menyimpan informasi lengkap tentang jurusan Statistika di Indonesia. Database ini dirancang untuk mencakup empat entitas utama: **Wilayah**, **Universitas**, **Program Studi**, dan **Jalur Masuk**. Masing-masing entitas memiliki atribut yang dirancang untuk memenuhi kebutuhan analisis data dan visualisasi yang komprehensif.  
 
-1. **Entitas Wilayah**  
+1. **Entitas Wilayah**
+   ![Image](https://github.com/user-attachments/assets/c550ed39-cb4c-48fe-8a7e-6022a7d417d8)
    Entitas ini berisi informasi tentang lokasi geografis, seperti `id_wilayah`, `nama_kabupaten_kota`, dan `nama_provinsi`. Data ini membantu dalam mengelompokkan universitas dan program studi berdasarkan daerah, memudahkan analisis distribusi geografis.  
 
-2. **Entitas Universitas**  
+2. **Entitas Universitas**
+   ![Image](https://github.com/user-attachments/assets/8071eb16-442d-40e0-b062-0939b65631ec)
    Entitas universitas menyimpan data seperti `id_univ`, `id_wilayah`, `nama_univ`, `akreditasi_univ`, serta atribut baru yaitu `longitude` dan `latitude`. Atribut geospasial ini memungkinkan visualisasi data universitas dalam bentuk peta interaktif pada dashboard, memberikan perspektif spasial yang lebih menarik.  
 
-3. **Entitas Program Studi**  
+3. **Entitas Program Studi**
+   ![Image](https://github.com/user-attachments/assets/1fde6d4d-173e-4c48-ac7b-1beef06f10fe)
    Entitas ini berfokus pada program studi Statistika, dengan atribut seperti `id_prodi`, `jenjang`, `id_univ`, `nama_prodi`, `jumlah_dosen`, `jumlah_mahasiswa`, dan `akreditasi_prodi`. Data ini memungkinkan analisis mendalam tentang kualitas dan kapasitas program studi di berbagai universitas.  
 
-4. **Entitas Jalur Masuk**  
+4. **Entitas Jalur Masuk**
+   ![Image](https://github.com/user-attachments/assets/c5801751-3808-41f4-bf26-95cb977e6215)
    Entitas jalur masuk mencatat informasi seperti `id_jalur`, `id_univ`, `id_prodi`, `website`, `daya_tampung`, dan `jalur_masuk`. Atribut `id_jalur` ditambahkan sebagai kode unik untuk menghindari anomali dan redundansi data. Entitas ini membantu dalam memahami variasi jalur penerimaan mahasiswa dan kapasitas penerimaan di setiap program studi.  
 
 Hasil dari proyek ini adalah sebuah database yang menyediakan informasi lengkap tentang jurusan Statistika di Indonesia, mencakup berbagai universitas, daerah, dan jalur masuk. Database ini tidak hanya berguna untuk analisis data, tetapi juga dapat menjadi alat bantu bagi calon mahasiswa, peneliti, dan pemangku kebijakan dalam mengambil keputusan terkait pendidikan tinggi.  
