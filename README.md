@@ -212,3 +212,12 @@ Integrasi dengan API eksternal untuk mendapatkan data terbaru secara otomatis.
 
 Team
 ![Image](https://github.com/user-attachments/assets/dec3d289-5f08-4170-9090-51943bbdc936)
+Zamrah Mumainah M0501241066
+
+Jefita Resti Sari M0501241031
+
+Claudian T. Tangdilomban M0501241048
+
+I Putu Gde Inove Bagus Prasetya M0501241084
+
+Carlya Agmis Aimandiga M0501241089
